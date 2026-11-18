@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1280" width="1200" height="1280" font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif">
+  <!--FONTS dm-400 dm-600 manrope-600-->
+  <!-- Colour roles, Forma light here; src/pages/images/[mockup].svg.ts swaps in the preset's values. -->
+  <style id="palette">svg{--m-surface:#FFFFFF;--m-surface-2:#F9F7FC;--m-line:#ECE8F2;--m-ink:#1B1426;--m-ink-2:#687083;--m-ink-3:#9BA4B6;--m-tint:#EFEBFF;--m-tint-2:#E4DDFB;--m-tint-3:#D9CFFB;--m-accent:#5B3FE0;--m-accent-text:#5B3FE0;--m-accent-2:#8B5CF6;--m-accent-light:#7B5CF2;--m-highlight:#C084FC;--m-grad-start:#6246EA;--m-terminal-accent:#A78BFA;--m-btn-1:#6A4EEE;--m-btn-2:#5236D6;--m-frame-1:#35278A;--m-frame-2:#5139C9;--m-frame-3:#7658EC;--m-glow:#CDB4FF;--m-page-glow:#C9B6FF;--m-reverse:#1B1426;--m-shadow:#1B1426;--m-shadow-tint:#2A1D5C}</style>
+  <defs>
+    <linearGradient id="frame" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" style="stop-color:var(--m-frame-1)"/>
+      <stop offset="0.52" style="stop-color:var(--m-frame-2)"/>
+      <stop offset="1" style="stop-color:var(--m-frame-3)"/>
+    </linearGradient>
+    <radialGradient id="glowTR" cx="1200" cy="0" r="1000" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-opacity="0.6" style="stop-color:var(--m-glow)"/>
+      <stop offset="1" stop-opacity="0" style="stop-color:var(--m-glow)"/>
+    </radialGradient>
+    <radialGradient id="glowBL" cx="0" cy="1280" r="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-opacity="0.32" style="stop-color:var(--m-highlight)"/>
+      <stop offset="1" stop-opacity="0" style="stop-color:var(--m-highlight)"/>
+    </radialGradient>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="14" cy="14" r="1.4" fill="#FFFFFF" fill-opacity="0.16"/>
+    </pattern>
+    <linearGradient id="btn" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" style="stop-color:var(--m-btn-1)"/>
+      <stop offset="1" style="stop-color:var(--m-btn-2)"/>
+    </linearGradient>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="30" stdDeviation="40" flood-opacity="0.35" style="flood-color:var(--m-shadow)"/>
+    </filter>
+    <filter id="soft" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-opacity="0.18" style="flood-color:var(--m-shadow)"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="1280" fill="url(#frame)"/>
+  <rect width="1200" height="1280" fill="url(#glowTR)"/>
+  <rect width="1200" height="1280" fill="url(#glowBL)"/>
+  <rect width="1200" height="1280" fill="url(#dots)"/>
+
+  <!-- The notice in the static HTML of /pricing -->
+  <g transform="translate(96 104)">
+    <rect width="1008" height="80" rx="20" fill="#FFFFFF" fill-opacity="0.14" stroke="#FFFFFF" stroke-opacity="0.28"/>
+    <circle cx="48" cy="40" r="17" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+    <path d="M48 32v1 M48 39v10" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+    <text x="84" y="49" font-size="26" fill="#FFFFFF">This page tests interest. These plans aren’t on sale yet.</text>
+  </g>
+
+  <!-- Plans -->
+  <g transform="translate(96 228)" filter="url(#soft)">
+    <rect width="484" height="620" rx="28" style="fill:var(--m-surface)"/>
+    <text x="44" y="78" font-size="28" font-weight="600" style="fill:var(--m-ink)">Solo</text>
+    <text x="44" y="168" font-family="Manrope, sans-serif" font-size="68" font-weight="600" letter-spacing="-2" style="fill:var(--m-ink)">$5<tspan font-family="'DM Sans', sans-serif" font-size="26" font-weight="400" letter-spacing="0" style="fill:var(--m-ink-2)">/mo</tspan></text>
+    <g fill-opacity="0.08" style="fill:var(--m-ink)">
+      <rect x="92" y="240" width="250" height="14" rx="7"/><rect x="92" y="300" width="210" height="14" rx="7"/><rect x="92" y="360" width="270" height="14" rx="7"/>
+    </g>
+    <g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--m-accent-text)">
+      <path d="M48 247l8 8 14-15"/><path d="M48 307l8 8 14-15"/><path d="M48 367l8 8 14-15"/>
+    </g>
+    <rect x="44" y="476" width="396" height="78" rx="18" stroke-width="2" style="fill:var(--m-surface);stroke:var(--m-tint-3)"/>
+    <text x="242" y="524" font-size="24" font-weight="600" text-anchor="middle" style="fill:var(--m-accent-text)">Choose plan</text>
+  </g>
+  <g transform="translate(620 228)" filter="url(#soft)">
+    <rect width="484" height="620" rx="28" stroke-width="3" style="fill:var(--m-surface);stroke:var(--m-highlight)"/>
+    <text x="44" y="78" font-size="28" font-weight="600" style="fill:var(--m-ink)">Studio</text>
+    <text x="44" y="168" font-family="Manrope, sans-serif" font-size="68" font-weight="600" letter-spacing="-2" style="fill:var(--m-ink)">$12<tspan font-family="'DM Sans', sans-serif" font-size="26" font-weight="400" letter-spacing="0" style="fill:var(--m-ink-2)">/mo</tspan></text>
+    <g fill-opacity="0.08" style="fill:var(--m-ink)">
+      <rect x="92" y="240" width="270" height="14" rx="7"/><rect x="92" y="300" width="230" height="14" rx="7"/><rect x="92" y="360" width="290" height="14" rx="7"/>
+    </g>
+    <g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--m-accent-text)">
+      <path d="M48 247l8 8 14-15"/><path d="M48 307l8 8 14-15"/><path d="M48 367l8 8 14-15"/>
+    </g>
+    <rect x="44" y="476" width="396" height="78" rx="18" fill="url(#btn)"/>
+    <text x="242" y="524" font-size="24" font-weight="600" fill="#FFFFFF" text-anchor="middle">Choose plan</text>
+  </g>
+
+  <!-- The disclosure after the click -->
+  <rect width="1200" height="1280" fill-opacity="0.22" style="fill:var(--m-shadow)"/>
+  <g transform="translate(120 640)" filter="url(#shadow)">
+    <rect width="960" height="532" rx="32" style="fill:var(--m-surface)"/>
+    <rect x="60" y="60" width="80" height="80" rx="22" style="fill:var(--m-tint)"/>
+    <path d="M82 101l13 13 24-27" fill="none" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--m-accent-text)"/>
+    <text x="172" y="96" font-family="Manrope, sans-serif" font-size="40" font-weight="600" letter-spacing="-1" style="fill:var(--m-ink)">Thanks, Studio isn’t available yet</text>
+    <text x="172" y="136" font-size="24" style="fill:var(--m-ink-2)">We’re measuring interest before we build it.</text>
+    <text x="60" y="222" font-size="27" style="fill:var(--m-ink)">Your click was counted. <tspan font-weight="600">No payment was taken.</tspan></text>
+    <text x="60" y="264" font-size="27" style="fill:var(--m-ink-2)">Want to hear when it launches?</text>
+    <rect x="60" y="306" width="514" height="86" rx="18" stroke-width="2" style="fill:var(--m-surface);stroke:var(--m-tint-2)"/>
+    <text x="92" y="359" font-size="24" style="fill:var(--m-ink-3)">you@studio.com</text>
+    <rect x="590" y="306" width="310" height="86" rx="18" fill="url(#btn)"/>
+    <text x="745" y="359" font-size="24" font-weight="600" fill="#FFFFFF" text-anchor="middle">Join the waitlist</text>
+    <line x1="60" y1="436" x2="900" y2="436" stroke-width="2" style="stroke:var(--m-line)"/>
+    <circle cx="74" cy="474" r="9" style="fill:var(--m-accent)"/>
+    <path d="M69.5 474l3 3 6-6.5" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="96" y="481" font-size="20" style="fill:var(--m-ink-2)">Shown after every plan click · checked by npm run validate</text>
+  </g>
+</svg>

@@ -1,0 +1,103 @@
+---
+/**
+ * /legal/data-request — export, delete or stop emails for an address. With the cloudflare
+ * provider the Worker emails a confirmation link and carries the request out when it is
+ * clicked; with any other provider the page offers an email to the contact address instead.
+ */
+import Page from "../../layouts/Page.astro";
+import Button from "../../components/ui/Button.astro";
+import { site } from "../../site.config";
+
+const provider = site.leads.provider;
+const automatic = provider.id === "cloudflare";
+const turnstileKey = provider.id === "cloudflare" ? provider.turnstileSiteKey : undefined;
+const mailto = `mailto:${site.legal.contactEmail}?subject=${encodeURIComponent(`Data request for ${site.product.name}`)}`;
+const field = "w-full min-h-[46px] rounded-md border border-line bg-surface px-4 text-lg text-ink outline-none transition-[border-color,box-shadow] focus:border-line-accent focus:ring-4 focus:ring-accent/15";
+const kinds = [
+  { value: "export", label: "Send me a copy of my data" },
+  { value: "delete", label: "Delete my data" },
+  { value: "unsubscribe", label: "Stop all emails" },
+];
+---
+<Page title={`Your data — ${site.product.name}`} description="Get a copy of your data, delete it or stop all emails.">
+  <div class="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+    <header class="flex flex-col gap-4 lg:sticky lg:top-24 lg:h-fit">
+      <p class="font-mono text-[16px] uppercase tracking-[0.08em] text-ink-accent">Legal</p>
+      <h1 class="font-display text-h2 font-medium tracking-[-0.03em] text-ink">Your data</h1>
+      <p class="text-lg text-ink-secondary">Get a copy of what we hold about your email address, delete it, or stop all emails. See the <a class="text-ink-accent underline underline-offset-2" href="/legal/privacy/">privacy policy</a> for what we collect.</p>
+    </header>
+
+    <div class="flex flex-col gap-8">
+    <p data-request-result hidden role="status" class="rounded-lg border border-line bg-accent-soft px-5 py-4 text-lg text-ink"></p>
+
+    {automatic ? (
+      <form data-data-request class="flex flex-col gap-5 rounded-xl border border-line bg-surface p-6 sm:p-8" novalidate>
+        <div class="flex flex-col gap-2">
+          <label class="text-md font-medium text-ink" for="dr-email">Email address</label>
+          <input id="dr-email" class={field} type="email" name="email" required autocomplete="email" />
+        </div>
+        <fieldset class="m-0 flex min-w-0 flex-col gap-2 border-0 p-0">
+          <legend class="mb-1 text-md font-medium text-ink">What should we do?</legend>
+          {kinds.map((kind, i) => (
+            <label class="flex cursor-pointer items-center gap-3 rounded-md border border-line px-4 py-3 text-lg text-ink transition-colors hover:border-line-accent has-[:checked]:border-line-accent has-[:checked]:bg-accent-soft">
+              <input type="radio" name="kind" value={kind.value} checked={i === 0} class="size-4 accent-[var(--bg-accent)]" />
+              {kind.label}
+            </label>
+          ))}
+        </fieldset>
+        {turnstileKey && (
+          <>
+            <div class="cf-turnstile" data-sitekey={turnstileKey} data-size="flexible"></div>
+            <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+          </>
+        )}
+        <Button type="submit" label="Send request" class="min-h-12 w-full sm:w-fit" />
+        <p class="text-sm text-ink-secondary">We email a confirmation link to this address first, so nobody can act on someone else’s data. The link works for 7 days.</p>
+        <p data-request-error role="status" aria-live="polite" class="text-md font-medium text-danger empty:hidden"></p>
+      </form>
+    ) : (
+      <div class="flex flex-col items-start gap-4 rounded-xl border border-line bg-surface p-6 sm:p-8">
+        <p class="text-lg text-ink">Write to us from the address in question and say what you’d like: a copy of your data, deletion, or no more emails. We answer within 30 days.</p>
+        <Button label={`Email ${site.legal.contactEmail}`} href={mailto} />
+      </div>
+    )}
+    </div>
+  </div>
+</Page>
+
+<script>
+  const result = document.querySelector<HTMLElement>("[data-request-result]");
+  const say = (message: string): void => {
+    if (!result) return;
+    result.textContent = message;
+    result.hidden = false;
+  };
+  const state = new URLSearchParams(location.search).get("state");
+  const done: Record<string, string> = {
+    "done-export": "Done: a copy of your data is on its way to your inbox.",
+    "done-delete": "Done: everything we held about that address is deleted.",
+    "done-unsubscribe": "Done: you won’t get any more emails from us.",
+    "link-invalid": "That link has expired or was already used. Send the request again for a fresh one.",
+  };
+  if (state && done[state]) say(done[state]);
+
+  const form = document.querySelector<HTMLFormElement>("form[data-data-request]");
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const data = new FormData(form);
+    const error = form.querySelector<HTMLElement>("[data-request-error]");
+    if (error) error.textContent = "";
+    const response = await fetch("/api/data-request", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: data.get("email"), kind: data.get("kind"), turnstileToken: data.get("cf-turnstile-response") || undefined }),
+    }).catch(() => null);
+    if (response?.ok) {
+      form.hidden = true;
+      say("Check your inbox: if that address is on our list, we’ve sent a link to confirm the request.");
+    } else if (error) {
+      error.textContent = response?.status === 429 ? "Too many requests. Please wait a few minutes." : "Something went wrong. Please try again, or email us.";
+    }
+  });
+</script>

@@ -1,0 +1,23 @@
+# PROJECT.md — what we are testing
+
+Filled in by the `validate-setup` skill; update it whenever the test changes.
+
+## The idea
+- Problem (in the customer's words):
+- Who feels it most:
+- What they do today instead:
+- The promise:
+
+## The test
+- Call to action: waitlist / early access / demo / pre-order / contact
+- Pricing: fake door / checkout — plans and prices:
+- Hypothesis (one sentence):
+- Success = ___ confirmed signups and ___% of /pricing/ visitors choosing a plan, by (date):
+
+## Channels
+| Channel | utm_source | Started |
+|---|---|---|
+
+## Log
+| Date | Change | Why |
+|---|---|---|

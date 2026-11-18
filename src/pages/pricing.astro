@@ -1,0 +1,22 @@
+---
+/**
+ * /pricing — the plans from site.config.ts. In fake-door mode this page measures interest:
+ * `npm run report -- --pricing-visitors N` compares "Choose plan" clicks with hypothesis.intentRateTarget.
+ */
+import Page from "../layouts/Page.astro";
+import Pricing from "../components/sections/Pricing.astro";
+import { site } from "../site.config";
+
+if (site.pricing.mode === "off") return Astro.redirect("/");
+const fakeDoor = site.pricing.mode === "fake-door";
+---
+<Page title={`Pricing — ${site.product.name}`} description={`Plans and prices for ${site.product.name}.`}>
+  <div class="pricing-bleed -mt-14 sm:-mt-20">
+    <Pricing id="pricing-page" headingLevel="h1" tagline="Pricing" heading="Pick the plan that fits" description={fakeDoor ? "Choose a plan to tell us which one you’d buy. Nothing is charged: we’re deciding what to build first." : "One-time licenses, no subscription."} />
+  </div>
+</Page>
+
+<!-- The section brings its own gutter and container: let it span the page's padding. -->
+<style is:global>
+  .pricing-bleed { margin-inline: calc(-1 * var(--craft-gutter, 16px)); }
+</style>

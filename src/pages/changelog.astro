@@ -1,0 +1,31 @@
+---
+/** /changelog — entries from src/content/changelog, newest first; also published as /rss.xml. */
+import { getCollection, render } from "astro:content";
+import Page from "../layouts/Page.astro";
+import { site } from "../site.config";
+
+const entries = (await getCollection("changelog")).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const rendered = await Promise.all(entries.map(async (entry) => ({ entry, Content: (await render(entry)).Content })));
+const date = (d: Date): string => d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+---
+<Page title={`Changelog — ${site.product.name}`} description={`What’s new in ${site.product.name}.`}>
+  <header class="mb-12 flex flex-col gap-4">
+    <p class="font-mono text-[16px] uppercase tracking-[0.08em] text-ink-accent">Changelog</p>
+    <h1 class="font-display text-h2 font-medium tracking-[-0.03em] text-ink">What’s new</h1>
+    <p class="text-lg text-ink-secondary">Follow along with the <a class="text-ink-accent underline underline-offset-2" href="/rss.xml">RSS feed</a>.</p>
+  </header>
+  <ol class="flex flex-col">
+    {rendered.map(({ entry, Content }) => (
+      <li class="grid gap-3 border-t border-line py-10 md:grid-cols-[220px_1fr] md:gap-12 lg:grid-cols-[320px_1fr]">
+        <div class="flex flex-col gap-1 text-md text-ink-secondary">
+          <time datetime={entry.data.date.toISOString().slice(0, 10)}>{date(entry.data.date)}</time>
+          {entry.data.version && <span class="font-mono text-sm text-ink-accent">v{entry.data.version}</span>}
+        </div>
+        <article class="legal-prose" id={entry.id}>
+          <h2>{entry.data.title}</h2>
+          <Content />
+        </article>
+      </li>
+    ))}
+  </ol>
+</Page>

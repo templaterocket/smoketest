@@ -1,0 +1,316 @@
+---
+/**
+ * Pricing34 — Relume pricing family pricing/f34 (pricing-46): left-aligned section title over a row of four plan cards (name + description, divider, price + yearly note + CTA, divider, feature list).
+ */
+import Button from "./Button.astro";
+
+interface Plan {
+  name: string;
+  price: string;
+  period?: string;
+  /** Small line under the price, e.g. "or $199 yearly". */
+  note?: string;
+  description?: string;
+  features: string[];
+  cta: string;
+  highlighted?: boolean;
+}
+
+interface Props {
+  tagline?: string;
+  heading?: string;
+  description?: string;
+  plans?: Plan[];
+}
+
+const {
+  tagline = "Tagline",
+  heading = "Pricing plan",
+  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+  plans = [
+    {
+      "name": "Free plan",
+      "price": "$0",
+      "period": "/mo",
+      "note": "or $0 yearly",
+      "description": "Lorem ipsum dolor sit amet",
+      "features": [
+        "Feature text goes here",
+        "Feature text goes here",
+        "Feature text goes here"
+      ],
+      "cta": "Get started"
+    },
+    {
+      "name": "Basic plan",
+      "price": "$19",
+      "period": "/mo",
+      "note": "or $199 yearly",
+      "description": "Lorem ipsum dolor sit amet",
+      "features": [
+        "Feature text goes here",
+        "Feature text goes here",
+        "Feature text goes here"
+      ],
+      "cta": "Get started"
+    },
+    {
+      "name": "Business plan",
+      "price": "$29",
+      "period": "/mo",
+      "note": "or $299 yearly",
+      "description": "Lorem ipsum dolor sit amet",
+      "features": [
+        "Feature text goes here",
+        "Feature text goes here",
+        "Feature text goes here",
+        "Feature text goes here"
+      ],
+      "cta": "Get started"
+    },
+    {
+      "name": "Enterprise plan",
+      "price": "$49",
+      "period": "/mo",
+      "note": "or $499 yearly",
+      "description": "Lorem ipsum dolor sit amet",
+      "features": [
+        "Feature text goes here",
+        "Feature text goes here",
+        "Feature text goes here",
+        "Feature text goes here",
+        "Feature text goes here"
+      ],
+      "cta": "Get started"
+    }
+  ],
+} = Astro.props;
+
+---
+<section class="pricing-34">
+  <div class="pricing-34__container">
+    <div class="pricing-34__head">
+      <div class="pricing-34__title">
+            {tagline && <p class="pricing-34__tagline">{tagline}</p>}
+            <div class="pricing-34__title-content">
+              <h2 class="pricing-34__heading">{heading}</h2>
+              {description && <p class="pricing-34__description">{description}</p>}
+            </div>
+          </div>
+    </div>
+    <div class="pricing-34__pane">
+      {plans.map((plan) => (
+        <div class:list={["pricing-34__card", plan.highlighted && "pricing-34__card--highlighted"]}>
+          <div class="pricing-34__plan-title">
+            <h3 class="pricing-34__plan-name">{plan.name}</h3>
+            {plan.description && <p class="pricing-34__plan-description">{plan.description}</p>}
+          </div>
+          <hr class="pricing-34__divider" />
+          <div class="pricing-34__price-content">
+            <div class="pricing-34__price-block">
+              <p class="pricing-34__price">{plan.price}{plan.period}</p>
+              {plan.note && <p class="pricing-34__note">{plan.note}</p>}
+            </div>
+            <div class="pricing-34__actions">
+              <Button label={plan.cta} href="#" variant="primary" />
+            </div>
+          </div>
+          <hr class="pricing-34__divider" />
+          <ul class="pricing-34__features">
+            {plan.features.map((feature) => (
+              <li class="pricing-34__feature">
+                <svg class="pricing-34__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7" /></svg>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing-34 {
+    padding: var(--space-section-vertical-l) var(--space-section-horizontal-l);
+    background: var(--bg-main);
+  }
+  .pricing-34__container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-48);
+    width: 100%;
+    max-width: var(--size-container-l);
+    margin-inline: auto;
+  }
+  .pricing-34__head {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-48);
+    width: 100%;
+  }
+  .pricing-34__title {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+    width: 100%;
+    max-width: var(--size-measure-l);
+  }
+  .pricing-34__tagline {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-body-m-size);
+    line-height: var(--font-body-m-line-height);
+    font-weight: 600;
+  }
+  .pricing-34__title-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-20);
+  }
+  .pricing-34__heading {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-titles-h2-size);
+    line-height: var(--font-titles-h2-line-height);
+    font-weight: 700;
+  }
+  .pricing-34__description {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-body-l-size);
+    line-height: var(--font-body-l-line-height);
+  }
+  .pricing-34__pane {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-32);
+    width: 100%;
+  }
+  .pricing-34__card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-32);
+    min-width: 0;
+    padding: var(--space-24);
+    background: var(--bg-secondary);
+    border: 1px solid var(--line-tertiary);
+    border-radius: var(--radius-4);
+  }
+  .pricing-34__card--highlighted {
+    border-color: var(--line-accent);
+  }
+  .pricing-34__card {
+    justify-content: space-between;
+  }
+  .pricing-34__plan-title {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  .pricing-34__price-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-24);
+  }
+  .pricing-34__price-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+  .pricing-34__plan-description {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-body-l-size);
+    line-height: var(--font-body-l-line-height);
+    font-weight: 400;
+  }
+  .pricing-34__divider {
+    width: 100%;
+    margin: 0;
+    border: 0;
+    border-top: 1px solid var(--line-tertiary);
+  }
+  .pricing-34__plan-name {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-body-xl-size);
+    line-height: var(--font-body-xl-line-height);
+    font-weight: 700;
+  }
+  .pricing-34__price {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-titles-h1-size);
+    line-height: var(--font-titles-h1-line-height);
+    font-weight: 700;
+  }
+  .pricing-34__note {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-body-l-size);
+    line-height: var(--font-body-l-line-height);
+    font-weight: 400;
+  }
+  .pricing-34__features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+    margin: 0;
+    padding: var(--space-8) 0;
+    list-style: none;
+  }
+  .pricing-34__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-16);
+    color: var(--text-main);
+    font-size: var(--font-body-l-size);
+    line-height: var(--font-body-l-line-height);
+  }
+  .pricing-34__check {
+    flex: none;
+    width: var(--space-24);
+    height: var(--space-24);
+    color: var(--icon-main);
+  }
+  .pricing-34__actions {
+    display: grid;
+    gap: var(--space-16);
+  }
+
+  @media (min-width: 768px) {
+    .pricing-34__container {
+      gap: var(--space-72);
+    }
+    .pricing-34__head {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--space-72);
+    }
+    .pricing-34__title {
+      gap: var(--space-16);
+    }
+    .pricing-34__title-content {
+      gap: var(--space-24);
+    }
+    .pricing-34__description {
+      font-size: var(--font-body-xl-size);
+      line-height: var(--font-body-xl-line-height);
+    }
+    .pricing-34__pane {
+      flex-direction: row;
+      align-items: stretch;
+      gap: var(--space-24);
+    }
+    .pricing-34__card {
+      flex: 1 1 0;
+      padding: var(--space-24);
+    }
+    .pricing-34__price-content {
+      gap: var(--space-32);
+    }
+  }
+</style>

@@ -1,0 +1,140 @@
+---
+/**
+ * Cta3 — Relume CTA family cta/f3 (cta-3, cta-5, cta-19, cta-25, cta-27, cta-29).
+ */
+import Button from "./Button.astro";
+
+interface Props {
+  /** default: the plain surface; tertiary: a tinted surface; image: an image placeholder under an overlay. */
+  surface?: "default" | "tertiary" | "image";
+  /** Text alignment; center also centers the column. */
+  align?: "start" | "center";
+  heading?: string;
+  description?: string;
+  primaryLabel?: string;
+  secondaryLabel?: string;
+  backgroundAlt?: string;
+}
+
+const {
+  surface = "default",
+  align = "start",
+  heading = "Medium length heading goes here",
+  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+  primaryLabel = "Button",
+  secondaryLabel = "Button",
+  backgroundAlt = "Background image",
+} = Astro.props;
+const alternate = surface !== "default";
+---
+<section class:list={["cta-3", `cta-3--${surface}`, `cta-3--${align}`]}>
+  {surface === "image" && (
+    <>
+      <div class="cta-3__background" role="img" aria-label={backgroundAlt}></div>
+      <div class="cta-3__overlay" aria-hidden="true"></div>
+    </>
+  )}
+  <div class="cta-3__container">
+    <div class="cta-3__column">
+      <div class="cta-3__content">
+        <h2 class="cta-3__heading">{heading}</h2>
+        <p class="cta-3__description">{description}</p>
+      </div>
+      <div class="cta-3__actions">
+        <Button label={primaryLabel} href="#" variant="primary" alternate={alternate} />
+        <Button label={secondaryLabel} href="#" variant="secondary" alternate={alternate} />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-3 {
+    padding: var(--space-section-vertical-l) var(--space-section-horizontal-l);
+    background: var(--bg-main);
+  }
+  .cta-3__container {
+    width: 100%;
+    max-width: var(--size-container-l);
+    margin-inline: auto;
+  }
+  .cta-3--tertiary {
+    background: var(--bg-tertiary);
+  }
+  .cta-3--image {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--bg-decorative);
+  }
+  .cta-3__background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--bg-tertiary);
+  }
+  .cta-3__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--bg-main-transparent);
+    opacity: 0.5;
+  }
+  .cta-3--image .cta-3__container {
+    position: relative;
+  }
+  .cta-3__column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-24);
+    width: 100%;
+    max-width: var(--size-measure-l);
+  }
+  .cta-3__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-20);
+  }
+  .cta-3__heading {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-titles-h2-size);
+    line-height: var(--font-titles-h2-line-height);
+    font-weight: 700;
+  }
+  .cta-3__description {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-body-l-size);
+    line-height: var(--font-body-l-line-height);
+    font-weight: 400;
+  }
+  .cta-3__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-16);
+    width: fit-content;
+    align-self: flex-start;
+  }
+  .cta-3--center .cta-3__column {
+    margin-inline: auto;
+    text-align: center;
+  }
+  .cta-3--center .cta-3__actions,
+  .cta-3--center .cta-3__form-actions {
+    align-self: center;
+  }
+
+  @media (min-width: 768px) {
+    .cta-3__column {
+      gap: var(--space-32);
+    }
+    .cta-3__content {
+      gap: var(--space-24);
+    }
+    .cta-3__description {
+      font-size: var(--font-body-xl-size);
+      line-height: var(--font-body-xl-line-height);
+    }
+  }
+</style>

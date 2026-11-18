@@ -1,0 +1,231 @@
+---
+/**
+ * Feature4 — Relume features family features/f4 (features-4, features-25, features-412).
+ * Tagline, heading and text with two subheading + text items, two actions, beside an image; stacked on mobile. `itemStyle: "stat"` shows the item titles as large numbers. `inset` adds the mobile right inset and square image of the variant.
+ */
+import Button from "./Button.astro";
+
+interface FeatureItem {
+  title: string;
+  text: string;
+}
+
+interface Props {
+  tagline?: string;
+  heading?: string;
+  text?: string;
+  items?: FeatureItem[];
+  itemStyle?: "subheading" | "stat";
+  primaryLabel?: string;
+  secondaryLabel?: string;
+  primaryHref?: string;
+  secondaryHref?: string;
+  imageAlt?: string;
+  inset?: boolean;
+}
+
+const {
+  tagline = "Tagline",
+  heading = "Medium length section heading goes here",
+  text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+  items = [
+    {
+      "title": "Subheading one",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros."
+    },
+    {
+      "title": "Subheading two",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros."
+    }
+  ],
+  itemStyle = "subheading",
+  primaryLabel = "Button",
+  secondaryLabel = "Button",
+  primaryHref = "#",
+  secondaryHref = "#",
+  imageAlt = "Placeholder image",
+  inset = false,
+} = Astro.props;
+---
+<section class:list={["feature-4", inset && "feature-4--inset"]}>
+  <div class="feature-4__container">
+    <div class="feature-4__component">
+      <div class="feature-4__content">
+        <div class="feature-4__title">
+          <p class="feature-4__tagline">{tagline}</p>
+          <div class="feature-4__heading-group">
+            <h2 class="feature-4__heading">{heading}</h2>
+            <p class="feature-4__text">{text}</p>
+          </div>
+        </div>
+        <ul class="feature-4__list">
+          {items.map((item) => (
+            <li class:list={["feature-4__item", itemStyle === "stat" && "feature-4__item--stat"]}>
+              {itemStyle === "stat" ? (
+                <p class="feature-4__item-title">{item.title}</p>
+              ) : (
+                <h3 class="feature-4__item-title">{item.title}</h3>
+              )}
+              <p class="feature-4__item-text">{item.text}</p>
+            </li>
+          ))}
+        </ul>
+        <div class="feature-4__actions">
+          <Button label={primaryLabel} href={primaryHref} variant="secondary" />
+          <Button label={secondaryLabel} href={secondaryHref} variant="link" iconPosition="trailing" />
+        </div>
+      </div>
+      <div class="feature-4__media" role="img" aria-label={imageAlt}></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .feature-4 {
+    padding: var(--space-section-vertical-l) var(--space-section-horizontal-l);
+    background: var(--bg-main);
+  }
+  .feature-4__container {
+    width: 100%;
+    max-width: var(--size-container-l);
+    margin-inline: auto;
+  }
+  .feature-4__component {
+    display: grid;
+    gap: var(--space-48);
+  }
+  .feature-4__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-24);
+    min-width: 0;
+  }
+  .feature-4__title {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+  .feature-4__tagline {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-body-m-size);
+    line-height: var(--font-body-m-line-height);
+    font-weight: 600;
+  }
+  .feature-4__heading-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-20);
+  }
+  .feature-4__heading {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-titles-h2-size);
+    line-height: var(--font-titles-h2-line-height);
+    font-weight: 700;
+  }
+  .feature-4__text {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-body-l-size);
+    line-height: var(--font-body-l-line-height);
+    font-weight: 400;
+  }
+  .feature-4__list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: var(--space-8) 0;
+    gap: var(--space-24);
+    list-style: none;
+  }
+  .feature-4__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+  .feature-4__item-title {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-body-xl-size);
+    line-height: var(--font-body-xl-line-height);
+    font-weight: 700;
+  }
+  .feature-4__item-text {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-body-l-size);
+    line-height: var(--font-body-l-line-height);
+    font-weight: 400;
+  }
+  .feature-4__item--stat {
+    gap: var(--space-8);
+  }
+  .feature-4__item--stat .feature-4__item-title {
+    font-size: var(--font-titles-h2-size);
+    line-height: var(--font-titles-h2-line-height);
+    font-weight: 700;
+  }
+  .feature-4__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-24);
+    width: fit-content;
+  }
+  .feature-4__media {
+    display: block;
+    width: 100%;
+    aspect-ratio: 335 / 348;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-12);
+  }
+  .feature-4--inset .feature-4__content {
+    padding-right: var(--space-48);
+  }
+  .feature-4--inset .feature-4__media {
+    aspect-ratio: 1 / 1;
+  }
+
+  @media (min-width: 768px) {
+    .feature-4__text {
+      font-size: var(--font-body-xl-size);
+      line-height: var(--font-body-xl-line-height);
+      font-weight: 400;
+    }
+    .feature-4__component {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: center;
+      gap: var(--space-72);
+    }
+    .feature-4__content {
+      gap: var(--space-32);
+    }
+    .feature-4__title {
+      gap: var(--space-16);
+    }
+    .feature-4__heading-group {
+      gap: var(--space-24);
+    }
+    .feature-4__list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-24);
+    }
+    .feature-4__item {
+      gap: var(--space-16);
+    }
+    .feature-4__item--stat {
+      gap: var(--space-8);
+    }
+    .feature-4__media {
+      aspect-ratio: 600 / 640;
+    }
+    .feature-4--inset .feature-4__content {
+      padding-right: 0;
+    }
+    .feature-4--inset .feature-4__media {
+      aspect-ratio: 600 / 640;
+    }
+  }
+</style>

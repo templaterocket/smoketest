@@ -1,0 +1,84 @@
+---
+/**
+ * Every call-to-action type side by side, on light and dark surfaces: a reference for choosing
+ * `cta.primary` / `cta.secondary` in site.config.ts. Not linked from the site and not indexed.
+ */
+import Base from "../../layouts/Base.astro";
+import Cta from "../../components/cta/Cta.astro";
+import type { Cta as CtaConfig } from "../../config/schema";
+
+const examples: { title: string; config: string; cta: CtaConfig }[] = [
+  {
+    title: "Waitlist",
+    config: `{ type: "waitlist", label: "Get early access" }`,
+    cta: { type: "waitlist", label: "Get early access", placeholder: "you@company.com" },
+  },
+  {
+    title: "Early access with qualifying questions",
+    config: `{ type: "access", label: "Request access", title: "…", questions: [ … ] }`,
+    cta: {
+      type: "access",
+      label: "Request access",
+      title: "Request early access",
+      description: "Two quick questions so we invite the right people first.",
+      submitLabel: "Request access",
+      questions: [
+        { id: "role", label: "What best describes you?", type: "radio", options: ["Solo founder", "Part of a team", "Agency or freelancer"], required: true },
+        { id: "problem", label: "What would you use it for?", type: "text", required: false, placeholder: "One sentence is enough" },
+      ],
+    },
+  },
+  {
+    title: "Book a demo",
+    config: `{ type: "demo", provider: "cal", url: "https://cal.com/you/demo", label: "Book a demo" }`,
+    cta: { type: "demo", provider: "cal", url: "https://cal.com/", label: "Book a demo" },
+  },
+  {
+    title: "Pre-order",
+    config: `{ type: "preorder", checkoutUrl: "https://…", label: "Pre-order — $39" }`,
+    cta: { type: "preorder", checkoutUrl: "https://example.com/checkout", label: "Pre-order — $39", note: "Charged when it ships. Full refund before then." },
+  },
+  {
+    title: "Contact or sales",
+    config: `{ type: "contact", label: "Talk to us", title: "…" }`,
+    cta: { type: "contact", label: "Talk to us", title: "Talk to the team", description: "Tell us what you are building; we reply within a day.", submitLabel: "Send message" },
+  },
+  {
+    title: "Link",
+    config: `{ type: "link", label: "See the changelog", href: "/changelog/" }`,
+    cta: { type: "link", label: "See the changelog", href: "/changelog/" },
+  },
+];
+---
+<Base title="Calls to action — examples" noindex>
+  <main class="mx-auto flex max-w-[1080px] flex-col gap-12 px-4 py-16 sm:px-6 sm:py-24">
+    <header class="flex flex-col gap-4">
+      <p class="font-mono text-[16px] uppercase tracking-[0.08em] text-ink-accent">site.config.ts → cta</p>
+      <h1 class="font-display text-h2 font-medium tracking-[-0.03em] text-balance text-ink">Every call to action the template ships</h1>
+      <p class="max-w-[640px] text-lg text-ink-secondary">Pick one for <code class="font-mono text-md">cta.primary</code> and, optionally, one for <code class="font-mono text-md">cta.secondary</code>. Forms send to the provider in <code class="font-mono text-md">leads.provider</code>.</p>
+    </header>
+
+    <div class="grid gap-5 md:grid-cols-2">
+      {examples.map((example, i) => (
+        <section class="flex flex-col gap-6 rounded-xl border border-line bg-surface p-6 sm:p-8">
+          <div class="flex flex-col gap-2">
+            <h2 class="font-display text-[20px] leading-7 font-semibold tracking-[-0.015em] text-ink">{example.title}</h2>
+            <code class="block overflow-x-auto rounded-md bg-surface-secondary px-3 py-2 font-mono text-sm text-ink-secondary">{example.config}</code>
+          </div>
+          <div class="flex flex-1 flex-col items-center justify-center gap-3 rounded-lg bg-surface-secondary px-4 py-8">
+            <Cta cta={example.cta} id={`example-${i}`} />
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <section class="cta-3 !p-0">
+      <div class="cta-3__container flex flex-col items-center gap-6 text-center">
+        <h2 class="cta-3__heading">On a dark surface</h2>
+        <div class="cta-3__actions cta-3__actions--form">
+          <Cta cta={examples[0]!.cta} id="example-dark" tone="dark" />
+        </div>
+      </div>
+    </section>
+  </main>
+</Base>

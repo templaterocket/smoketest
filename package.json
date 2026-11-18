@@ -1,0 +1,35 @@
+{
+  "name": "smoketest",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "dev:api": "astro build && wrangler d1 migrations apply smoketest-leads --local && wrangler dev --port 8787",
+    "build": "astro build",
+    "preview": "wrangler dev --port 8787",
+    "db:migrate:local": "wrangler d1 migrations apply smoketest-leads --local",
+    "db:migrate": "wrangler d1 migrations apply smoketest-leads --remote",
+    "validate": "node scripts/validate.mjs",
+    "report": "node scripts/report.mjs",
+    "og": "node scripts/og.mjs",
+    "icons": "node scripts/icons.mjs",
+    "link-skills": "node scripts/link-skills.mjs",
+    "deploy": "astro build && node scripts/validate.mjs && wrangler deploy"
+  },
+  "dependencies": {
+    "astro": "7.3.5",
+    "lucide-static": "^1.73.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@cloudflare/workers-types": "^5.20261030.1",
+    "@resvg/resvg-js": "^2.6.2",
+    "@tailwindcss/vite": "^4.3.3",
+    "esbuild": "^0.28.2",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.156.0"
+  },
+  "license": "MIT"
+}

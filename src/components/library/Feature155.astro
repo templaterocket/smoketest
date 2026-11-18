@@ -1,0 +1,240 @@
+---
+/**
+ * Feature155 — Relume features family features/f155
+ * (features-237, -298, -302, -328, -329, -332, -333).
+ * A section title, a row of three or four icon features (icon above heading and text), and actions.
+ * surface: default (plain), image (image placeholder under an overlay), tertiary (tinted).
+ */
+import Button from "./Button.astro";
+
+interface Feature {
+  title: string;
+  text: string;
+  /** An inline SVG (e.g. a Lucide icon imported with ?raw); without it, the library's placeholder shape. */
+  icon?: string;
+}
+
+interface Props {
+  surface?: "default" | "image" | "tertiary";
+  tagline?: string;
+  heading?: string;
+  description?: string;
+  features?: Feature[];
+  primaryLabel?: string;
+  secondaryLabel?: string;
+  primaryHref?: string;
+  secondaryHref?: string;
+  backgroundAlt?: string;
+}
+
+const feature: Feature = {
+  title: "Medium length section heading goes here",
+  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.",
+};
+
+const {
+  surface = "default",
+  tagline = "Tagline",
+  heading = "Medium length section heading goes here",
+  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+  features = [feature, feature, feature],
+  primaryLabel = "Button",
+  secondaryLabel = "Button",
+  primaryHref = "#",
+  secondaryHref = "#",
+  backgroundAlt = "Background image",
+} = Astro.props;
+const four = features.length >= 4;
+---
+<section class:list={["feature-155", surface === "image" && "feature-155--image", surface === "tertiary" && "feature-155--tertiary"]}>
+  {surface === "image" && (
+    <>
+      <div class="feature-155__background" role="img" aria-label={backgroundAlt}></div>
+      <div class="feature-155__overlay" aria-hidden="true"></div>
+    </>
+  )}
+  <div class="feature-155__container">
+    <div class="feature-155__title">
+      <p class="feature-155__tagline">{tagline}</p>
+      <div class="feature-155__copy">
+        <h2 class="feature-155__heading">{heading}</h2>
+        <p class="feature-155__description">{description}</p>
+      </div>
+    </div>
+    <ul class:list={["feature-155__features", four && "feature-155__features--four"]}>
+      {features.map((item) => (
+        <li class="feature-155__feature">
+          {item.icon
+            ? <span class="feature-155__icon feature-155__icon--custom" aria-hidden="true" set:html={item.icon} />
+            : <svg class="feature-155__icon" viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><path d="M24 4 40 13v22L24 44 8 35V13L24 4Zm0 6.9-10 5.6v15l10 5.6 10-5.6v-15l-10-5.6Z" /></svg>}
+          <div class="feature-155__content">
+            <h3 class="feature-155__feature-title">{item.title}</h3>
+            <p class="feature-155__feature-text">{item.text}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+    <div class="feature-155__actions">
+      <Button label={primaryLabel} href={primaryHref} variant="secondary" />
+      <Button label={secondaryLabel} href={secondaryHref} variant="link" iconPosition="trailing" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .feature-155 {
+    position: relative;
+    isolation: isolate;
+    padding: var(--space-section-vertical-l) var(--space-section-horizontal-l);
+    background: var(--bg-main);
+  }
+  .feature-155--tertiary {
+    background: var(--bg-tertiary);
+  }
+  .feature-155--image {
+    overflow: hidden;
+    background: var(--bg-decorative);
+  }
+  .feature-155__background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--bg-tertiary);
+  }
+  .feature-155__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--bg-main-transparent);
+    opacity: 0.5;
+  }
+  .feature-155__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-48);
+    width: 100%;
+    max-width: var(--size-container-l);
+    margin-inline: auto;
+  }
+  .feature-155__title {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+    width: 100%;
+    max-width: var(--size-measure-l);
+  }
+  .feature-155__tagline {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-body-m-size);
+    line-height: var(--font-body-m-line-height);
+    font-weight: 600;
+  }
+  .feature-155__copy {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-20);
+  }
+  .feature-155__heading {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-titles-h2-size);
+    line-height: var(--font-titles-h2-line-height);
+    font-weight: 700;
+  }
+  .feature-155__description {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-body-l-size);
+    line-height: var(--font-body-l-line-height);
+  }
+  .feature-155__features {
+    display: grid;
+    gap: var(--space-48);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .feature-155__feature {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-20);
+  }
+  .feature-155__icon {
+    flex: none;
+    width: var(--space-48);
+    height: var(--space-48);
+    color: var(--icon-main);
+  }
+  .feature-155__icon--custom {
+    display: grid;
+    place-items: center;
+  }
+  .feature-155__icon--custom :global(svg) {
+    width: 100%;
+    height: 100%;
+    stroke-width: 1.75;
+  }
+  .feature-155__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-20);
+  }
+  .feature-155__features--four .feature-155__content {
+    gap: var(--space-12);
+  }
+  .feature-155__feature-title {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-titles-h4-size);
+    line-height: var(--font-titles-h4-line-height);
+    font-weight: 700;
+  }
+  .feature-155__feature-text {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-body-l-size);
+    line-height: var(--font-body-l-line-height);
+  }
+  .feature-155__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-24);
+  }
+
+  @media (min-width: 768px) {
+    .feature-155__container {
+      gap: var(--space-72);
+    }
+    .feature-155__title {
+      gap: var(--space-16);
+    }
+    .feature-155__copy {
+      gap: var(--space-24);
+    }
+    .feature-155__description {
+      font-size: var(--font-body-xl-size);
+      line-height: var(--font-body-xl-line-height);
+    }
+    .feature-155__features {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .feature-155__features--four {
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-32);
+    }
+    .feature-155__feature {
+      gap: var(--space-24);
+    }
+    .feature-155__content {
+      gap: var(--space-24);
+    }
+    .feature-155__features--four .feature-155__content {
+      gap: var(--space-16);
+    }
+  }
+</style>

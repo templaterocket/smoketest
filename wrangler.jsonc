@@ -1,0 +1,37 @@
+// Cloudflare Worker for Smoketest: serves the built site (dist/) and the leads API (/api/*).
+// Settings live in src/site.config.ts; secrets are set with `wrangler secret put` (see README):
+//   RESEND_API_KEY        sends double opt-in, data-request and owner emails (optional locally)
+//   TURNSTILE_SECRET_KEY  verifies the bot check (needs leads.provider.turnstileSiteKey)
+//   IP_HASH_SALT          HMAC salt for IP hashes; raw IPs are never stored
+//   LEADS_WEBHOOK_URL     optional: every new and confirmed lead is POSTed here (Zapier, Make, n8n)
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "smoketest",
+  "main": "worker/src/index.ts",
+  "compatibility_date": "2026-10-20",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "smoketest-leads",
+      // Replace with the id `wrangler d1 create smoketest-leads` prints. Local dev works without it.
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "worker/migrations"
+    }
+  ],
+  "vars": {
+    // A sender on a domain verified in Resend, e.g. "Smoketest <hello@yourdomain.com>".
+    "EMAIL_FROM": "Smoketest <onboarding@resend.dev>",
+    // Where contact and access requests are emailed (optional).
+    "OWNER_EMAIL": "",
+    "IP_HASH_RETENTION_DAYS": "30"
+  },
+  // Daily: retry unsent confirmation emails, drop IP hashes past retention, prune old requests.
+  "triggers": { "crons": ["17 3 * * *"] },
+  "observability": { "enabled": true }
+}

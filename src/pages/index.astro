@@ -1,0 +1,292 @@
+---
+/**
+ * The homepage. First written by website-toolkit-builder apply from site-plan.json; now the
+ * template's own page — edit it here, and do not re-run apply on this site (it would overwrite
+ * this file). Copy lives in the section constants below; calls to action and leads come from
+ * src/site.config.ts. `layout` there picks which sections show, in which order:
+ *   minimal  hero (with the form) → FAQ
+ *   product  hero → how it works → stats panel → what's inside → fake door → pricing → FAQ → CTA
+ *   story    hero → problem → solution → how it works → pricing → FAQ → CTA
+ * Each section keeps its data-section number in every layout (the mockup images below key on it).
+ */
+import type { ComponentProps } from "astro/types";
+import Base from "../layouts/Base.astro";
+import SiteHeader from "../components/site/SiteHeader.astro";
+import SiteFooter from "../components/site/SiteFooter.astro";
+import Hero from "../components/sections/Hero.astro";
+import Feature459 from "../components/library/Feature459.astro";
+import StatsSection2 from "../components/library/StatsSection2.astro";
+import Feature155 from "../components/library/Feature155.astro";
+import Feature4 from "../components/library/Feature4.astro";
+import Pricing from "../components/sections/Pricing.astro";
+import Faq2 from "../components/library/Faq2.astro";
+import CtaPanel from "../components/sections/CtaPanel.astro";
+import { site } from "../site.config";
+import { siteUrl } from "../lib/url";
+// Feature icons: Lucide (ISC), inlined at build time.
+import iconMailCheck from "lucide-static/icons/mail-check.svg?raw";
+import iconChartColumn from "lucide-static/icons/chart-column.svg?raw";
+import iconScale from "lucide-static/icons/scale.svg?raw";
+import iconBot from "lucide-static/icons/bot.svg?raw";
+import iconMailX from "lucide-static/icons/mail-x.svg?raw";
+import iconTag from "lucide-static/icons/tag.svg?raw";
+import iconPuzzle from "lucide-static/icons/puzzle.svg?raw";
+import iconBadgeAlert from "lucide-static/icons/badge-alert.svg?raw";
+
+const { layout } = site;
+/** A wrapper's style that hands its section a product mockup, light and dark (see the style block at the end). */
+const mockup = (name: string): string => `display: contents; --mockup: url("/images/${name}.svg"); --mockup-dark: url("/images/${name}-dark.svg")`;
+
+const section2: ComponentProps<typeof Hero> = {
+  "heading": "Measure demand before you build",
+  "description": "A waitlist, fake-door pricing and analytics in one Astro template, set up by your coding agent.",
+  "imageAlt": "A founder's waitlist page built with Smoketest, beside its npm run report summary"
+};
+const section3: ComponentProps<typeof Feature459> = {
+  "heading": "How it works",
+  "features": [
+    {
+      "icon": "<svg viewBox=\"0 0 48 48\" aria-hidden=\"true\"><rect width=\"48\" height=\"48\" rx=\"12\" fill=\"var(--bg-accent)\"/><text x=\"24\" y=\"31\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"var(--text-reverse)\">1</text></svg>",
+      "title": "Interview with your agent",
+      "text": "Run /validate-setup. Your coding agent asks about the idea, the audience and the price, then fills site.config.ts and the content collections."
+    },
+    {
+      "icon": "<svg viewBox=\"0 0 48 48\" aria-hidden=\"true\"><rect width=\"48\" height=\"48\" rx=\"12\" fill=\"var(--bg-accent)\"/><text x=\"24\" y=\"31\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"var(--text-reverse)\">2</text></svg>",
+      "title": "Publish the page",
+      "text": "Deploy to Cloudflare's free tier, where the Worker serves the page and stores your leads. The waitlist, fake door and legal pages go live together."
+    },
+    {
+      "icon": "<svg viewBox=\"0 0 48 48\" aria-hidden=\"true\"><rect width=\"48\" height=\"48\" rx=\"12\" fill=\"var(--bg-accent)\"/><text x=\"24\" y=\"31\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"var(--text-reverse)\">3</text></svg>",
+      "title": "Read the signal",
+      "text": "npm run report shows confirmed signups, referrals, UTM sources and plan clicks against the target you set. What it means is your call."
+    }
+  ],
+  "imageAlt": "The /validate-setup interview in a terminal, the published waitlist page with its opt-in email, and the npm run report chart"
+};
+const section4: ComponentProps<typeof StatsSection2> = {
+  "variant": "card",
+  "heading": "Everything a demand test needs, in one repo",
+  "description": "No glue code between a form service, an analytics script, a pricing experiment and a privacy page. Pro ships the whole loop and checks it with one command.",
+  "stats": [
+    {
+      "value": "8",
+      "label": "Lead providers",
+      "description": "Cloudflare Worker + D1 by default, or Web3Forms, Formspree, Kit, Loops, Buttondown, Resend or a webhook."
+    },
+    {
+      "value": "5",
+      "label": "Legal drafts",
+      "description": "Privacy, cookies, terms, pre-orders and imprint, plus a data-request page. Not legal advice."
+    },
+    {
+      "value": "22",
+      "label": "Validate checks",
+      "description": "Unfilled tokens, missing disclosures, leaked secrets and unreadable colours are caught before you deploy."
+    },
+    {
+      "value": "8",
+      "label": "Agent skills",
+      "description": "Plus AGENTS.md and CLAUDE.md, so your coding agent configures the site with checks, not guesses."
+    }
+  ]
+};
+// story only: the problem the page solves, before the solution (section 4).
+const problem: ComponentProps<typeof Feature155> = {
+  "tagline": "The problem",
+  "heading": "A good-looking page can’t tell you if anyone wants it",
+  "description": "Most pre-launch pages collect an email and stop there. The numbers you would decide on are missing or unreliable.",
+  "features": [
+    {
+      "icon": iconMailX,
+      "title": "Signups you can’t trust",
+      "text": "Mistyped addresses, bots and one-click joins all count the same when nobody confirms an email."
+    },
+    {
+      "icon": iconTag,
+      "title": "No price signal",
+      "text": "A waitlist shows curiosity. It doesn’t show what anyone would pay."
+    },
+    {
+      "icon": iconPuzzle,
+      "title": "Glue code before the first visitor",
+      "text": "A form service, an analytics script, a pricing test and a privacy page, wired together by hand."
+    },
+    {
+      "icon": iconBadgeAlert,
+      "title": "Copy you can’t back",
+      "text": "Borrowed cookie banners and compliance badges promise more than a weekend page can keep."
+    }
+  ],
+  "primaryLabel": "See what’s included",
+  "secondaryLabel": "How it works",
+  "primaryHref": "#solution",
+  "secondaryHref": "#how-it-works"
+};
+const section5: ComponentProps<typeof Feature155> = {
+  "surface": "tertiary",
+  "tagline": "What's inside",
+  "heading": "The demand-testing parts, already wired",
+  "description": "Smoketest isn't a design kit. It's the plumbing that turns a landing page into a measurement.",
+  "features": [
+    {
+      "icon": iconMailCheck,
+      "title": "Lead capture that respects people",
+      "text": "A waitlist with double opt-in, a real queue position, referrals, UTM attribution and qualifying questions."
+    },
+    {
+      "icon": iconChartColumn,
+      "title": "Cookieless analytics",
+      "text": "Events without cookies that honour Do Not Track and Global Privacy Control. By default the browser keeps nothing but a visitor’s theme choice."
+    },
+    {
+      "icon": iconScale,
+      "title": "Legal starting points",
+      "text": "Five drafts filled from your config, plus a self-service page where visitors export or delete their data."
+    },
+    {
+      "icon": iconBot,
+      "title": "Built for coding agents",
+      "text": "AGENTS.md, CLAUDE.md, eight skills and typed config errors, so your agent can edit safely and check its work."
+    }
+  ],
+  "primaryLabel": "Compare plans",
+  "secondaryLabel": "Read the FAQ",
+  "primaryHref": "/pricing/",
+  "secondaryHref": "#faq"
+};
+const section6: ComponentProps<typeof Feature4> = {
+  "tagline": "Fake-door pricing",
+  "heading": "Test the price before the product exists",
+  "text": "Show real plans on /pricing and count who clicks Choose plan. Every click is logged as intent, and the visitor is told right away that you're measuring interest.",
+  "items": [
+    {
+      "title": "Disclosed after the click",
+      "text": "Every Choose plan opens a message that says the plan isn't on sale yet. validate fails the build if a payment field appears."
+    },
+    {
+      "title": "Never takes money",
+      "text": "The fake door has no checkout. When you're ready for preorders, /preorder hands off to a hosted checkout, and it's off by default."
+    }
+  ],
+  "itemStyle": "subheading",
+  "primaryLabel": "Try the pricing page",
+  "secondaryLabel": "How it stays honest",
+  "primaryHref": "/pricing/",
+  "secondaryHref": "/legal/terms/#testing-interest",
+  "imageAlt": "Pricing page with the disclosure after a click: your click was counted, no payment was taken"
+};
+const section7: ComponentProps<typeof Pricing> = {
+  "tagline": "Editions",
+  "heading": "Start free. Upgrade when you're ready to measure.",
+  "description": "One-time licenses, no subscription. Pro updates are free within the current major version."
+};
+const section8: ComponentProps<typeof Faq2> = {
+  "look": "card",
+  "heading": "Questions",
+  "description": "Straight answers, including what Smoketest won't do.",
+  "questions": [
+    {
+      "question": "Will Smoketest tell me if my idea is good?",
+      "answer": "No. It measures interest: confirmed signups, referrals, sources and plan clicks against the target you set. What the numbers mean is your call.",
+      "open": true
+    },
+    {
+      "question": "Is a fake door honest?",
+      "answer": "Only when it's disclosed, so Smoketest always discloses it. Every Choose plan click opens a message that says the plan isn't on sale yet, and no payment is ever taken."
+    },
+    {
+      "question": "Do the legal drafts replace a lawyer?",
+      "answer": "No. They're starting-point drafts, not legal advice: have a person check them before launch. validate reminds you until legal.reviewed is set to true, and your agent can't flip that flag."
+    },
+    {
+      "question": "Which coding agents does it work with?",
+      "answer": "Any agent that reads AGENTS.md or CLAUDE.md, such as Claude Code, Cursor or Codex. The skills give it an interview, typed config errors and a validate command to check its work."
+    },
+    {
+      "question": "What does it cost to run?",
+      "answer": "The site is static. Cloudflare's free tier covers the start, including the Worker and D1 database that store Pro leads."
+    },
+    {
+      "question": "Can I move from Lite to Pro later?",
+      "answer": "Yes. Your URLs stay the same, /legal/privacy/ included, and your config carries over."
+    }
+  ],
+  "ctaLabel": "Ask a question",
+  "ctaHref": `mailto:${site.legal.contactEmail}`
+};
+const jsonLd: Record<string, unknown>[] = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: (section8.questions ?? []).map((q) => ({ "@type": "Question", name: q.question, acceptedAnswer: { "@type": "Answer", text: q.answer } })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: site.product.name,
+    description: site.product.description,
+    ...(siteUrl && { url: siteUrl.toString() }),
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Web",
+    ...(site.pricing.mode === "checkout" ? { offers: site.pricing.plans.filter((p) => p.checkoutUrl).map((p) => ({ "@type": "Offer", name: p.name, price: p.price.replace(/[^0-9.]/gu, ""), priceCurrency: "USD", url: p.checkoutUrl })) } : {}),
+  },
+];
+const section9: ComponentProps<typeof CtaPanel> = {
+  "heading": "Find out if anyone wants it before you build it",
+  "description": "Set up Smoketest with your coding agent, publish it, and let real visitors answer."
+};
+---
+<Base title={site.seo.title ?? `${site.product.name} — ${site.product.description}`} jsonLd={jsonLd}>
+  <SiteHeader />
+  <div data-section="2" style={mockup("hero-product")}>
+    <Hero {...section2} />
+  </div>
+  {layout === "story" && (
+    <>
+      <div data-section="problem" style="display: contents">
+        <span id="problem" aria-hidden="true"></span>
+        <Feature155 {...problem} />
+      </div>
+      <div data-section="4" style="display: contents">
+        <span id="solution" aria-hidden="true"></span>
+        <StatsSection2 {...section4} />
+      </div>
+    </>
+  )}
+  {layout !== "minimal" && (
+    <div data-section="3" style={mockup("how-it-works")}>
+      <span id="how-it-works" aria-hidden="true"></span>
+      <Feature459 {...section3} />
+    </div>
+  )}
+  {layout === "product" && (
+    <>
+      <div data-section="4" style="display: contents">
+        <StatsSection2 {...section4} />
+      </div>
+      <div data-section="5" style="display: contents">
+        <Feature155 {...section5} />
+      </div>
+      <div data-section="6" style={mockup("fake-door")}>
+        <Feature4 {...section6} />
+      </div>
+    </>
+  )}
+  {layout !== "minimal" && site.pricing.mode !== "off" && <Pricing id="pricing" {...section7} />}
+  <div data-section="8" style="display: contents">
+    <span id="faq" aria-hidden="true"></span>
+    <Faq2 {...section8} />
+  </div>
+  {layout !== "minimal" && (
+    <div data-section="9" style="display: contents">
+      <CtaPanel {...section9} />
+    </div>
+  )}
+  <SiteFooter />
+</Base>
+
+<!-- Product mockups: drawn from design/mockups/ in the preset's colours by src/pages/images/[mockup].svg.ts. -->
+<style is:global>
+  :is([data-section="2"] .hero-header-82__image, [data-section="3"] .feature-459__media, [data-section="6"] .feature-4__media) { background: var(--mockup) center / cover no-repeat; }
+  :root[data-theme="dark"] :is([data-section="2"] .hero-header-82__image, [data-section="3"] .feature-459__media, [data-section="6"] .feature-4__media) { background-image: var(--mockup-dark); }
+</style>

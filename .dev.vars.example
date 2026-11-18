@@ -1,0 +1,7 @@
+# Local secrets for `npm run dev:api` — copy to .dev.vars (git-ignored) and fill in what you need.
+# Without RESEND_API_KEY, emails are printed in the terminal instead of sent.
+RESEND_API_KEY=
+# Turnstile's test secret that always passes is 1x0000000000000000000000000000000AA (site key 1x00000000000000000000AA).
+TURNSTILE_SECRET_KEY=
+IP_HASH_SALT=local-development-salt
+LEADS_WEBHOOK_URL=

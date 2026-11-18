@@ -1,0 +1,190 @@
+---
+/**
+ * Feature459 — Relume features family features/f459 (features-682).
+ * A bordered card split in two: an image, then a stacked list of icon-left features, each with a link.
+ * Stacked on mobile, side by side (halves) from 768px.
+ */
+import Button from "./Button.astro";
+
+interface FeatureItem {
+  icon?: string;
+  title: string;
+  text: string;
+  href?: string;
+  linkLabel?: string;
+}
+
+interface Props {
+  heading?: string;
+  features?: FeatureItem[];
+  imageAlt?: string;
+}
+
+const {
+  heading = "Medium length section heading goes here",
+  features = [
+    {
+      "title": "Short heading here",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+      "linkLabel": "Button",
+      "href": "#"
+    },
+    {
+      "title": "Short heading here",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+      "linkLabel": "Button",
+      "href": "#"
+    },
+    {
+      "title": "Short heading here",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+      "linkLabel": "Button",
+      "href": "#"
+    }
+  ],
+  imageAlt = "Placeholder image",
+} = Astro.props;
+---
+<section class="feature-459">
+  <div class="feature-459__container">
+    <div class="feature-459__card">
+    <div class="feature-459__media" role="img" aria-label={imageAlt}></div>
+    <div class="feature-459__content">
+      <h2 class="feature-459__sr-only">{heading}</h2>
+      <ul class="feature-459__features">
+        {features.map((item) => (
+          <li class="feature-459__feature">
+            {item.icon ? <span class="feature-459__feature-icon" set:html={item.icon} /> : <span class="feature-459__feature-icon"><svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><path d="M24 4 40 13v22L24 44 8 35V13L24 4Zm0 6-11 6.2v15.6L24 38l11-6.2V16.2L24 10Z" /></svg></span>}
+            <div class="feature-459__feature-body">
+              <h3 class="feature-459__feature-title">{item.title}</h3>
+              <p class="feature-459__feature-text">{item.text}</p>
+              {item.linkLabel && (
+                <div class="feature-459__feature-action">
+                  <Button label={item.linkLabel} href={item.href ?? "#"} variant="link" iconPosition="trailing" />
+                </div>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .feature-459 {
+    padding: var(--space-section-vertical-l) var(--space-section-horizontal-l);
+    background: var(--bg-main);
+  }
+  .feature-459__container {
+    width: 100%;
+    max-width: var(--size-container-l);
+    margin-inline: auto;
+  }
+  .feature-459__card {
+    display: grid;
+    grid-template-columns: 100%;
+    overflow: hidden;
+    background: var(--bg-secondary);
+    border: 1px solid var(--line-tertiary);
+    border-radius: var(--radius-12);
+  }
+  .feature-459__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-24);
+    min-width: 0;
+    padding: var(--space-24);
+  }
+  .feature-459__sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+  .feature-459__features {
+    display: grid;
+    grid-template-columns: 100%;
+    gap: var(--space-32);
+    margin: 0;
+    padding: var(--space-8) 0;
+    list-style: none;
+  }
+  .feature-459__feature {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-24);
+    min-width: 0;
+  }
+  .feature-459__feature-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-12);
+    min-width: 0;
+  }
+  .feature-459__feature-title {
+    font-size: var(--font-titles-h4-size);
+    line-height: var(--font-titles-h4-line-height);
+    font-weight: 700;
+  }
+  .feature-459__feature-title,
+  .feature-459__feature-stat,
+  .feature-459__feature-text {
+    margin: 0;
+    color: var(--text-main);
+  }
+  .feature-459__feature-text {
+    font-size: var(--font-body-l-size);
+    line-height: var(--font-body-l-line-height);
+    font-weight: 400;
+  }
+  .feature-459__feature-icon {
+    display: block;
+    flex: none;
+    width: var(--space-48);
+    height: var(--space-48);
+    color: var(--icon-main);
+  }
+  .feature-459__feature-icon :global(svg) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .feature-459__feature-action {
+    display: flex;
+    padding-top: var(--space-8);
+  }
+  .feature-459__media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 335 / 326;
+    background: var(--bg-tertiary);
+  }
+
+  @media (min-width: 768px) {
+    .feature-459__card {
+      grid-template-columns: 1fr 1fr;
+    }
+    .feature-459__content {
+      gap: var(--space-32);
+      padding: var(--space-48);
+    }
+    .feature-459__feature-body {
+      gap: var(--space-16);
+    }
+    .feature-459__media {
+      align-self: stretch;
+      aspect-ratio: 1 / 1;
+    }
+  }
+</style>

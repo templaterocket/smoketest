@@ -1,0 +1,177 @@
+---
+/**
+ * StatsSection2 — Relume stats family stats-sections/f2 (stats-sections-2, -4, -50).
+ * Heading beside a description; a row of stats below.
+ * variant: default (bordered stats), image (image placeholder under an overlay),
+ * card (stats on bordered cards).
+ */
+interface Stat {
+  value: string;
+  label: string;
+  description?: string;
+}
+
+interface Props {
+  variant?: "default" | "image" | "card";
+  heading?: string;
+  description?: string;
+  stats?: Stat[];
+  backgroundAlt?: string;
+}
+
+const {
+  variant = "default",
+  heading = "Long heading is what you see here in this feature section",
+  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.",
+  stats = [
+    { value: "30%", label: "Short heading goes here" },
+    { value: "30%", label: "Short heading goes here" },
+    { value: "30%", label: "Short heading goes here" },
+  ],
+  backgroundAlt = "Background image",
+} = Astro.props;
+---
+<section class:list={["stats-section-2", `stats-section-2--${variant}`]}>
+  {variant === "image" && (
+    <>
+      <div class="stats-section-2__background" role="img" aria-label={backgroundAlt}></div>
+      <div class="stats-section-2__overlay" aria-hidden="true"></div>
+    </>
+  )}
+  <div class="stats-section-2__container">
+    <div class="stats-section-2__header">
+      <h2 class="stats-section-2__heading">{heading}</h2>
+      <p class="stats-section-2__description">{description}</p>
+    </div>
+    <ul class="stats-section-2__stats">
+      {stats.map((stat) => (
+        <li class="stats-section-2__stat">
+          <p class="stats-section-2__value">{stat.value}</p>
+          <h3 class="stats-section-2__label">{stat.label}</h3>
+          {stat.description && <p class="stats-section-2__stat-description">{stat.description}</p>}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .stats-section-2 {
+    padding: var(--space-section-vertical-l) var(--space-section-horizontal-l);
+    background: var(--bg-main);
+  }
+  .stats-section-2--image {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--bg-decorative);
+  }
+  .stats-section-2__background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--bg-tertiary);
+  }
+  .stats-section-2__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--bg-main-transparent);
+    opacity: 0.5;
+  }
+  .stats-section-2__container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-48);
+    width: 100%;
+    max-width: var(--size-container-l);
+    margin-inline: auto;
+  }
+  .stats-section-2__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-20);
+  }
+  .stats-section-2__heading {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-titles-h3-size);
+    line-height: var(--font-titles-h3-line-height);
+    font-weight: 700;
+  }
+  .stats-section-2__description {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-body-l-size);
+    line-height: var(--font-body-l-line-height);
+    font-weight: 400;
+  }
+  .stats-section-2__stats {
+    display: grid;
+    gap: var(--space-32);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .stats-section-2__stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    padding-left: var(--space-32);
+    border-left: 1px solid var(--line-tertiary);
+  }
+  .stats-section-2--image .stats-section-2__stat {
+    border-color: var(--line-main);
+  }
+  .stats-section-2--card .stats-section-2__stat {
+    padding: var(--space-32);
+    background: var(--bg-secondary);
+    border: 1px solid var(--line-tertiary);
+    border-radius: var(--radius-4);
+  }
+  .stats-section-2__value {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-titles-h1-size);
+    line-height: var(--font-titles-h1-line-height);
+    font-weight: 700;
+  }
+  .stats-section-2__label {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-body-xl-size);
+    line-height: var(--font-body-xl-line-height);
+    font-weight: 700;
+  }
+  .stats-section-2__stat-description {
+    margin: 0;
+    color: var(--text-main);
+    font-size: var(--font-body-l-size);
+    line-height: var(--font-body-l-line-height);
+    font-weight: 400;
+  }
+
+  @media (min-width: 768px) {
+    .stats-section-2__container {
+      gap: var(--space-72);
+    }
+    .stats-section-2__header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      gap: var(--space-72);
+    }
+    .stats-section-2__description {
+      font-size: var(--font-body-xl-size);
+      line-height: var(--font-body-xl-line-height);
+    }
+    .stats-section-2__stats {
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
+      gap: var(--space-48);
+    }
+    .stats-section-2--card .stats-section-2__stats {
+      gap: var(--space-32);
+    }
+  }
+</style>
