@@ -5,7 +5,8 @@
  *
  * fake-door: "Choose plan" records the click (POST /api/intent with the cloudflare provider, and
  *   the plan_intent event), then opens a dialog that says the plan is not on sale yet — no payment
- *   is taken — and offers the waitlist.
+ *   is taken — and offers the waitlist. The dialog says the click was counted only once
+ *   /api/intent has stored it; other providers record nothing, so it never says so there.
  * checkout: each paid plan links to its hosted checkout.
  */
 import Button from "../ui/Button.astro";
@@ -82,7 +83,7 @@ const waitlistLabel = site.cta.primary.type === "waitlist" ? site.cta.primary.la
 
 {fakeDoor && (
   <Dialog id={`${id}-disclosure`} title={disclosure.dialogTitle} description={disclosure.dialogText}>
-    <p class="-mt-2 text-md text-ink-secondary" data-plan-picked></p>
+    <p class="-mt-2 text-md text-ink-secondary" data-plan-picked aria-live="polite"></p>
     <LeadForm id={`${id}-waitlist`} kind="waitlist" submitLabel={waitlistLabel} layout="inline" />
   </Dialog>
 )}
@@ -97,11 +98,20 @@ const waitlistLabel = site.cta.primary.type === "waitlist" ? site.cta.primary.la
       if (!button) return;
       const plan = button.dataset.planIntent ?? "";
       track("plan_intent", { plan });
-      if (intentEndpoint) {
-        void fetch(intentEndpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ plan, page: location.pathname }), keepalive: true }).catch(() => undefined);
+      const picked = document.querySelector<HTMLElement>(`#${CSS.escape(button.dataset.dialogOpen ?? "")} [data-plan-picked]`);
+      const chose = `You chose ${button.dataset.planName ?? plan}.`;
+      if (picked) {
+        picked.textContent = chose;
+        picked.dataset.plan = plan;
       }
-      const picked = document.querySelector(`#${CSS.escape(button.dataset.dialogOpen ?? "")} [data-plan-picked]`);
-      if (picked) picked.textContent = `You chose ${button.dataset.planName ?? plan}.`;
+      if (intentEndpoint) {
+        void fetch(intentEndpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ plan, page: location.pathname }), keepalive: true })
+          .then((response) => {
+            // Only a stored click is "counted"; a later click on another plan wins.
+            if (response.ok && picked?.dataset.plan === plan) picked.textContent = `${chose} Your click was counted.`;
+          })
+          .catch(() => undefined);
+      }
     });
   }
 </script>

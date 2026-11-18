@@ -161,7 +161,8 @@ export const configSchema = z.object({
     mode: z.enum(["fake-door", "checkout", "off"]).default("fake-door"),
     disclosure: z.object({
       dialogTitle: label.default("Thanks — this plan isn’t available yet"),
-      dialogText: label.default("We’re measuring interest before we build it. Your click was counted and no payment was taken. Leave your email to hear when it launches."),
+      /** Don't say the click was counted here: the dialog adds that itself once the Worker has stored it. */
+      dialogText: label.default("We’re measuring interest before we build it. No payment was taken. Leave your email to hear when it launches."),
     }).prefault({}),
     plans: z.array(z.object({
       id: z.string().regex(/^[a-z0-9-]+$/u),

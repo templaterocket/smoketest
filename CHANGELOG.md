@@ -4,6 +4,12 @@ All notable changes to Smoketest are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [1.0.1] — 2026-11-18
+
+- Fake-door pricing: the dialog no longer says "Your click was counted" when nothing stored the
+  click. It adds that line only once the included Worker has recorded it (`/api/intent`); with a
+  browser form service the dialog says only that no payment was taken.
+
 ## [1.0.0] — 2026-11-18
 
 First public release, free under the MIT licence.
