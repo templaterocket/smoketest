@@ -1,6 +1,6 @@
 ---
 name: launch
-description: Deploy the site and the leads Worker to Cloudflare — D1 database, secrets, email sender, bot check, domain — or the static site to Netlify or Vercel, and run the pre-launch checks. Use when the owner says "put it live", "deploy" or "launch".
+description: Deploys the site and the leads Worker to Cloudflare — D1 database, secrets, email sender, bot check, domain — or the static site to Netlify or Vercel, and runs the pre-launch checks. Use when the owner says "put it live", "deploy" or "launch".
 ---
 
 # launch — from local to live
@@ -29,7 +29,7 @@ description: Deploy the site and the leads Worker to Cloudflare — D1 database,
    npx wrangler secret put RESEND_API_KEY           # double opt-in and data-request emails
    ```
 7. Resend: the owner verifies their sending domain; set `EMAIL_FROM` in `wrangler.jsonc`
-   (e.g. "Product <hello@theirdomain.com>"), and `OWNER_EMAIL` for contact/access requests.
+   (e.g. "Product <hello@example.com>", on their own domain), and `OWNER_EMAIL` for contact/access requests.
 8. Optional bot check: create a Turnstile widget, put the **site key** in
    `leads.provider.turnstileSiteKey` and the **secret** with `npx wrangler secret put TURNSTILE_SECRET_KEY`.
 9. `npm run deploy` (build → validate → wrangler deploy). Then add the custom domain in the
@@ -39,4 +39,4 @@ description: Deploy the site and the leads Worker to Cloudflare — D1 database,
 11. Smoke test live: sign up with a real address (on Cloudflare: click the email link, check
     `/thanks/` shows the place in line, choose a plan on `/pricing/`, `npm run report -- --remote`). Open
     `/sitemap.xml` (pages end with `/`) and `/robots.txt` (its `Sitemap:` line).
-12. **Search Console**: the owner adds the domain and submits `https://theirdomain/sitemap.xml`.
+12. **Search Console**: the owner adds the domain and submits `https://<their-domain>/sitemap.xml`.

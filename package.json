@@ -1,7 +1,7 @@
 {
   "name": "smoketest",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -14,7 +14,6 @@
     "report": "node scripts/report.mjs",
     "og": "node scripts/og.mjs",
     "icons": "node scripts/icons.mjs",
-    "link-skills": "node scripts/link-skills.mjs",
     "deploy": "astro build && node scripts/validate.mjs && wrangler deploy"
   },
   "dependencies": {

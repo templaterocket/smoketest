@@ -6,6 +6,11 @@ a lead layer with double opt-in, a real queue and referrals, fake-door pricing t
 discloses itself, cookieless analytics, and a legal pack of starting-point drafts. Set it up with
 your coding agent: the `validate-setup` skill interviews you and fills everything in.
 
+**Live demo: [smoketest-demo.shipthemes.com](https://smoketest-demo.shipthemes.com/)** — this repo deployed
+as is, except that `leads.provider` is `{ id: "none" }`, so the demo's forms send nothing. The sample
+product on it, Paylark (polite reminders for unpaid invoices), is made up; `/validate-setup` replaces
+it with yours.
+
 ## Quick start
 
 ```bash
@@ -17,8 +22,8 @@ Open http://localhost:8787, join the waitlist, and copy the confirmation link fr
 (locally, emails are printed instead of sent). For hot reload while editing, run `npm run dev`
 (http://localhost:4321) alongside: it forwards `/api` to the Worker.
 
-Then edit **`src/site.config.ts`** — the one file with every setting — or ask your agent:
-run `npm run link-skills` once and start with `/validate-setup`.
+Then edit **`src/site.config.ts`** — the one file with every setting — or ask your agent: in
+Claude Code or Cursor, start with `/validate-setup` (the skills are in `.claude/skills/`).
 
 ## Commands
 
@@ -32,7 +37,6 @@ run `npm run link-skills` once and start with `/validate-setup`.
 | `npm run og` | Redraws `public/og-default.png` from the product name and description |
 | `npm run icons` | Renders `favicon.ico`, `apple-touch-icon.png`, `icon-192.png` and `icon-512.png` from `public/favicon.svg` |
 | `npm run deploy` | Build, validate, deploy to Cloudflare |
-| `npm run link-skills` | Links `agent/skills` for Claude Code (`.claude/skills`) and Cursor (`.cursor/rules`) |
 | `npx astro check` | Type check |
 
 ## What's in `site.config.ts`
@@ -186,7 +190,7 @@ Whichever host you pick, go through this list once; `npm run validate` checks mo
   header settings (Cloudflare: a response header Transform Rule for that hostname). Never put it in
   a file the production build ships.
 - **Search Console.** After the first deploy, add the domain in Google Search Console and submit
-  `https://yourdomain/sitemap.xml` (`robots.txt` points to it as well). The sitemap lists the public
+  `https://<your-domain>/sitemap.xml` (`robots.txt` points to it as well). The sitemap lists the public
   pages; `lastmod` comes only from real dates — the newest changelog entry and `legal.effectiveDate`
   for the legal drafts — and thank-you, example and 404 pages stay out.
 
@@ -273,9 +277,9 @@ src/styles/               presets.css (colours), tokens.css (theme), fonts.css, 
 src/scripts/fx/           effects (ASCII background and waves, tilt, reveal)
 src/integrations/         redirects-check (warns when public/_redirects or vercel.json miss a redirect)
 worker/                   the Cloudflare Worker and D1 migrations
-scripts/                  validate, report, og, icons, link-skills
+scripts/                  validate, report, og, icons
 public/                   favicon.svg and the icons rendered from it, og-default.png, _redirects, fonts
-agent/skills/             skills for coding agents
+.claude/skills/           skills for coding agents (Claude Code and Cursor load them)
 design/mockups/           sources of the product mockups (drawn by src/pages/images/[mockup].svg.ts)
 ```
 

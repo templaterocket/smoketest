@@ -7,9 +7,10 @@
 import { loadConfig } from "./config/schema";
 
 export const site = loadConfig({
+  // The sample content is a made-up product, Paylark: replace it with yours (or run /validate-setup).
   product: {
-    name: "Smoketest",
-    description: "An Astro template for testing demand for a SaaS idea before you build it.",
+    name: "Paylark",
+    description: "Polite reminders for unpaid invoices, sent on schedule until the client pays.",
     url: "https://example.com",
   },
 
@@ -24,7 +25,7 @@ export const site = loadConfig({
   cta: {
     // Other kinds: { type: "access", … } · { type: "demo", provider: "cal", url: "https://cal.com/you/demo", label: "Book a demo" }
     // · { type: "preorder", checkoutUrl: "https://…", label: "Pre-order — $39" } · { type: "contact", … }. All of them: /examples/cta.
-    primary: { type: "waitlist", label: "Get early access", placeholder: "you@company.com" },
+    primary: { type: "waitlist", label: "Join the waitlist", placeholder: "you@example.com" },
     secondary: { type: "link", label: "See how it works", href: "#how-it-works" },
   },
 
@@ -48,37 +49,39 @@ export const site = loadConfig({
     mode: "fake-door",
     plans: [
       {
-        id: "lite",
-        name: "Lite",
-        description: "A page with a working form, fast.",
-        price: "Free",
-        note: "MIT license. Clone the public GitHub repo, no purchase needed.",
-        features: ["4 pages: home, thanks, privacy, 404", "Light and dark, 6 palettes, 3 font pairs", "Leads via Web3Forms or a webhook", "One privacy policy draft", "Cookieless analytics", "AGENTS.md, CLAUDE.md, brand skill"],
-        cta: "Get Lite",
+        id: "solo",
+        name: "Solo",
+        description: "For a freelancer with a few clients.",
+        price: "$5",
+        period: "/mo",
+        note: "Billed monthly. Cancel anytime.",
+        features: ["Up to 10 open invoices", "4 reminder steps per invoice", "Friendly, neutral and firm wording", "Sent from your own address"],
       },
       {
-        id: "pro",
-        name: "Pro",
-        description: "The full demand-testing engine.",
-        price: "$49",
-        note: "One-time. $39 for the first two weeks after launch.",
-        features: ["10 pages, 3 homepage layouts, RSS", "8 lead providers, Worker + D1", "Double opt-in, queue, referrals", "Fake-door /pricing, disclosed", "5 legal drafts, data requests", "validate, report, 8 agent skills"],
+        id: "studio",
+        name: "Studio",
+        description: "For a small studio that bills every week.",
+        price: "$12",
+        period: "/mo",
+        note: "Billed monthly. Cancel anytime.",
+        features: ["Unlimited open invoices", "Your own schedule per client", "Edit the wording of every step", "A payment link in each reminder", "Pause a client in one click"],
         highlighted: true,
         badge: "Recommended",
       },
       {
         id: "agency",
         name: "Agency",
-        description: "Everything in Pro, for client work.",
-        price: "$129–149",
-        note: "One-time. Final price and license scope set at launch.",
-        features: ["Everything in Pro", "Commercial license for client sites", "Many client sites, one purchase", "Free updates in the major version", "All 8 agent skills on every site", "validate and report on every site"],
+        description: "For teams that bill many clients.",
+        price: "$29",
+        period: "/mo",
+        note: "Billed monthly. Up to 5 people.",
+        features: ["Everything in Studio", "5 team members", "Reminders in your clients' languages", "A monthly summary of what was paid", "Priority email support"],
       },
     ],
   },
 
   hypothesis: {
-    statement: "Founders who build with coding agents will pay $49 for a template that tests demand for them.",
+    statement: "Freelancers who chase late invoices by hand will pay $12 a month to have it done for them, politely.",
     intentRateTarget: 0.1,
     signupTarget: 100,
   },

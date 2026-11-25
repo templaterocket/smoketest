@@ -7,9 +7,8 @@
  * Fonts come from the pair in fonts.css.
  *
  * Every rule is prefixed with `body.craft` so it outranks the components' scoped styles
- * (`.x[data-astro-cid-…]`) without editing them: the library sections stay as `apply` copied
- * them, and `website-toolkit-builder apply` can still re-run on the plan. This file, the
- * layout and src/scripts/fx/ are the site's own and apply never rewrites them.
+ * (`.x[data-astro-cid-…]`) without editing them: the section components in
+ * src/components/library/ stay as they are, and the look lives here.
  */
 
 body.craft {
@@ -315,9 +314,9 @@ body.craft .hero-header-82__column {
   gap: 32px;
 }
 body.craft .hero-header-82__content { align-items: center; gap: 22px; }
-/* The launch-offer pill (Forma's "New" badge). */
-body.craft .hero-header-82__content::before {
-  content: "Launch offer  ·  Pro $39";
+/* The pill above the hero heading (Forma's "New" badge); its text is the hero's `pill`. */
+body.craft .hero-header-82__pill {
+  margin: 0;
   display: inline-flex;
   align-items: center;
   padding: 6px 14px 6px 12px;
@@ -328,7 +327,6 @@ body.craft .hero-header-82__content::before {
   font-size: 16px;
   line-height: 24px;
   font-weight: 600;
-  white-space: pre;
   box-shadow: 0 1px 2px color-mix(in srgb, var(--craft-accent) 8%, transparent);
 }
 body.craft .hero-header-82__heading {
@@ -578,7 +576,7 @@ body.craft .pricing-34__note { color: var(--text-secondary); }
 body.craft .pricing-34__divider { border-color: var(--line-additional); }
 body.craft .pricing-34__check { color: var(--icon-accent); }
 body.craft .pricing-34__actions .button { width: 100%; }
-/* Lite: a quiet outline button. */
+/* The first plan: a quiet outline button. */
 body.craft .pricing-34__card:first-child .button {
   --craft-spot: color-mix(in srgb, var(--craft-accent) 12%, transparent);
   background: var(--bg-main);

@@ -1,6 +1,6 @@
 ---
 name: validate-setup
-description: Interview the founder about their SaaS idea and set up this Smoketest site for it — product, audience, copy, call to action, leads provider, pricing test, hypothesis and legal details. Use at the start of a new site, or when the owner says "set this up for my idea".
+description: Interviews the founder about their SaaS idea and sets up this Smoketest site for it — product, audience, copy, call to action, leads provider, pricing test, hypothesis and legal details. Use at the start of a new site, or when the owner says "set this up for my idea".
 ---
 
 # validate-setup — from idea to a configured test page
@@ -8,7 +8,7 @@ description: Interview the founder about their SaaS idea and set up this Smokete
 You are setting up a demand test, not a finished product site. Ask, don't guess. One question at a
 time; offer your recommended answer first. Keep notes in `PROJECT.md` (copy `PROJECT.md.template`).
 
-## 1. Interview (8–12 questions)
+## 1. Interview (13 questions; skip any the owner has already answered)
 
 1. **The problem** in one sentence, in the customer's words.
 2. **Who** feels it most — be specific (role, situation), not "small businesses".

@@ -26,7 +26,7 @@ const label = z.string().min(1);
  * link — a plain link (docs, GitHub, an anchor on the page).
  */
 export const ctaSchema = z.discriminatedUnion("type", [
-  z.object({ type: z.literal("waitlist"), label, placeholder: z.string().default("you@company.com"), note: z.string().optional() }),
+  z.object({ type: z.literal("waitlist"), label, placeholder: z.string().default("you@example.com"), note: z.string().optional() }),
   z.object({ type: z.literal("access"), label, title: label, description: z.string().optional(), submitLabel: label.default("Request access"), questions: z.array(questionSchema).min(1).max(5) }),
   z.object({ type: z.literal("demo"), label, provider: z.enum(["cal", "calendly", "link"]), url: z.url() }),
   z.object({ type: z.literal("preorder"), label, checkoutUrl: z.url(), note: z.string().optional() }),

@@ -1,6 +1,6 @@
 ---
 name: copy
-description: Write or tighten the landing page copy — hero, how it works, features, FAQ, CTA — in the founder's words, honestly. Use when the owner asks to rewrite text, make it clearer or shorter, or adapt it to a new audience.
+description: Writes or tightens the landing page copy — hero, how it works, features, FAQ, CTA — in the founder's words, honestly. Use when the owner asks to rewrite text, make it clearer or shorter, or adapt it to a new audience.
 ---
 
 # copy — clear words, no invented proof

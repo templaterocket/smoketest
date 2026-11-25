@@ -23,7 +23,7 @@ interface Props {
   tone?: "light" | "dark";
 }
 
-const { id, kind, submitLabel, placeholder = "you@company.com", note, questions = [], layout = "stacked", tone = "light" } = Astro.props;
+const { id, kind, submitLabel, placeholder = "you@example.com", note, questions = [], layout = "stacked", tone = "light" } = Astro.props;
 const { provider, consent, consentText, successPath, attribution } = site.leads;
 const embed = provider.id === "embed" ? provider : null;
 const emailName = embed ? (embed.emailField ?? EMBED_EMAIL_FIELD[embed.service]) : "email";

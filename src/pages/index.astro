@@ -1,8 +1,6 @@
 ---
 /**
- * The homepage. First written by website-toolkit-builder apply from site-plan.json; now the
- * template's own page — edit it here, and do not re-run apply on this site (it would overwrite
- * this file). Copy lives in the section constants below; calls to action and leads come from
+ * The homepage. Copy lives in the section constants below; calls to action and leads come from
  * src/site.config.ts. `layout` there picks which sections show, in which order:
  *   minimal  hero (with the form) → FAQ
  *   product  hero → how it works → stats panel → what's inside → fake door → pricing → FAQ → CTA
@@ -25,128 +23,131 @@ import { site } from "../site.config";
 import { siteUrl } from "../lib/url";
 // Feature icons: Lucide (ISC), inlined at build time.
 import iconMailCheck from "lucide-static/icons/mail-check.svg?raw";
-import iconChartColumn from "lucide-static/icons/chart-column.svg?raw";
-import iconScale from "lucide-static/icons/scale.svg?raw";
-import iconBot from "lucide-static/icons/bot.svg?raw";
+import iconListChecks from "lucide-static/icons/list-checks.svg?raw";
+import iconMessageSquareText from "lucide-static/icons/message-square-text.svg?raw";
+import iconBellOff from "lucide-static/icons/bell-off.svg?raw";
 import iconMailX from "lucide-static/icons/mail-x.svg?raw";
-import iconTag from "lucide-static/icons/tag.svg?raw";
-import iconPuzzle from "lucide-static/icons/puzzle.svg?raw";
-import iconBadgeAlert from "lucide-static/icons/badge-alert.svg?raw";
+import iconHourglass from "lucide-static/icons/hourglass.svg?raw";
+import iconCalendarX from "lucide-static/icons/calendar-x.svg?raw";
+import iconBanknote from "lucide-static/icons/banknote.svg?raw";
 
 const { layout } = site;
 /** A wrapper's style that hands its section a product mockup, light and dark (see the style block at the end). */
 const mockup = (name: string): string => `display: contents; --mockup: url("/images/${name}.svg"); --mockup-dark: url("/images/${name}-dark.svg")`;
 
+// The sample content below is a made-up product, Paylark (polite reminders for unpaid invoices), so the
+// page reads like a real demand test. Replace it with your own product's words (/validate-setup does it).
 const section2: ComponentProps<typeof Hero> = {
-  "heading": "Measure demand before you build",
-  "description": "A waitlist, fake-door pricing and analytics in one Astro template, set up by your coding agent.",
-  "imageAlt": "A founder's waitlist page built with Smoketest, beside its npm run report summary"
+  "pill": "Early access",
+  "heading": "Invoices that chase themselves",
+  "description": "Paylark sends polite reminders on the schedule you set and stops the moment your client pays.",
+  "imageAlt": "The Paylark invoice list: amounts, reminders sent and status for each client, beside the next reminder email"
 };
 const section3: ComponentProps<typeof Feature459> = {
   "heading": "How it works",
   "features": [
     {
       "icon": "<svg viewBox=\"0 0 48 48\" aria-hidden=\"true\"><rect width=\"48\" height=\"48\" rx=\"12\" fill=\"var(--bg-accent)\"/><text x=\"24\" y=\"31\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"var(--text-reverse)\">1</text></svg>",
-      "title": "Interview with your agent",
-      "text": "Run /validate-setup. Your coding agent asks about the idea, the audience and the price, then fills site.config.ts and the content collections."
+      "title": "Add an invoice",
+      "text": "Forward the invoice email or upload a CSV. Paylark reads the client, the amount and the due date."
     },
     {
       "icon": "<svg viewBox=\"0 0 48 48\" aria-hidden=\"true\"><rect width=\"48\" height=\"48\" rx=\"12\" fill=\"var(--bg-accent)\"/><text x=\"24\" y=\"31\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"var(--text-reverse)\">2</text></svg>",
-      "title": "Publish the page",
-      "text": "Deploy to Cloudflare's free tier, where the Worker serves the page and stores your leads. The waitlist, fake door and legal pages go live together."
+      "title": "Pick the schedule",
+      "text": "Choose when reminders go out and how they sound, from a friendly nudge before the due date to a firm note ten days late."
     },
     {
       "icon": "<svg viewBox=\"0 0 48 48\" aria-hidden=\"true\"><rect width=\"48\" height=\"48\" rx=\"12\" fill=\"var(--bg-accent)\"/><text x=\"24\" y=\"31\" text-anchor=\"middle\" font-size=\"20\" font-weight=\"700\" fill=\"var(--text-reverse)\">3</text></svg>",
-      "title": "Read the signal",
-      "text": "npm run report shows confirmed signups, referrals, UTM sources and plan clicks against the target you set. What it means is your call."
+      "title": "Get paid",
+      "text": "When the client pays, the reminders for that invoice stop. You never have to write the awkward email yourself."
     }
   ],
-  "imageAlt": "The /validate-setup interview in a terminal, the published waitlist page with its opt-in email, and the npm run report chart"
+  "imageAlt": "Three steps: an invoice read from a forwarded PDF, a four-step reminder schedule, and the invoice marked as paid"
 };
 const section4: ComponentProps<typeof StatsSection2> = {
   "variant": "card",
-  "heading": "Everything a demand test needs, in one repo",
-  "description": "No glue code between a form service, an analytics script, a pricing experiment and a privacy page. Pro ships the whole loop and checks it with one command.",
+  "heading": "One job, done every time",
+  "description": "Paylark follows up on unpaid invoices. It doesn't send invoices, take payments or touch your accounting.",
   "stats": [
     {
-      "value": "8",
-      "label": "Lead providers",
-      "description": "Cloudflare Worker + D1 by default, or Web3Forms, Formspree, Kit, Loops, Buttondown, Resend or a webhook."
+      "value": "4",
+      "label": "Reminder steps",
+      "description": "Before the due date, on the day, then five and ten days late. Move or remove any of them."
     },
     {
-      "value": "5",
-      "label": "Legal drafts",
-      "description": "Privacy, cookies, terms, pre-orders and imprint, plus a data-request page. Not legal advice."
+      "value": "3",
+      "label": "Tones",
+      "description": "Friendly, neutral or firm, set per step. Every message can be read and edited before it goes out."
     },
     {
-      "value": "22",
-      "label": "Validate checks",
-      "description": "Unfilled tokens, missing disclosures, leaked secrets and unreadable colours are caught before you deploy."
+      "value": "0",
+      "label": "Payment fees",
+      "description": "Clients pay you the way they do today. Paylark adds your payment link and never holds the money."
     },
     {
-      "value": "8",
-      "label": "Agent skills",
-      "description": "Plus AGENTS.md and CLAUDE.md, so your coding agent configures the site with checks, not guesses."
+      "value": "1",
+      "label": "Click to pause",
+      "description": "A client asked for more time? Pause their reminders until you resume them."
     }
   ]
 };
 // story only: the problem the page solves, before the solution (section 4).
 const problem: ComponentProps<typeof Feature155> = {
   "tagline": "The problem",
-  "heading": "A good-looking page can’t tell you if anyone wants it",
-  "description": "Most pre-launch pages collect an email and stop there. The numbers you would decide on are missing or unreliable.",
+  "heading": "Getting paid shouldn’t be a second job",
+  "description": "Most late invoices aren’t disputes. They slip because nobody followed up in time.",
   "features": [
     {
       "icon": iconMailX,
-      "title": "Signups you can’t trust",
-      "text": "Mistyped addresses, bots and one-click joins all count the same when nobody confirms an email."
+      "title": "The email you put off",
+      "text": "Asking for money you’ve already earned feels awkward, so the reminder waits another week."
     },
     {
-      "icon": iconTag,
-      "title": "No price signal",
-      "text": "A waitlist shows curiosity. It doesn’t show what anyone would pay."
+      "icon": iconHourglass,
+      "title": "Follow-ups that slip",
+      "text": "The note you meant to send on Monday goes out on Thursday, if it goes out at all."
     },
     {
-      "icon": iconPuzzle,
-      "title": "Glue code before the first visitor",
-      "text": "A form service, an analytics script, a pricing test and a privacy page, wired together by hand."
+      "icon": iconCalendarX,
+      "title": "Due dates in five places",
+      "text": "Your inbox, a spreadsheet and your memory each hold part of who owes what."
     },
     {
-      "icon": iconBadgeAlert,
-      "title": "Copy you can’t back",
-      "text": "Borrowed cookie banners and compliance badges promise more than a weekend page can keep."
+      "icon": iconBanknote,
+      "title": "Cash you can’t plan",
+      "text": "Without steady follow-ups, you can’t tell when the money will arrive."
     }
   ],
-  "primaryLabel": "See what’s included",
+  "primaryLabel": "See how Paylark helps",
   "secondaryLabel": "How it works",
   "primaryHref": "#solution",
   "secondaryHref": "#how-it-works"
 };
 const section5: ComponentProps<typeof Feature155> = {
   "surface": "tertiary",
-  "tagline": "What's inside",
-  "heading": "The demand-testing parts, already wired",
-  "description": "Smoketest isn't a design kit. It's the plumbing that turns a landing page into a measurement.",
+  "tagline": "Features",
+  "heading": "Everything a reminder needs, nothing it doesn’t",
+  "description": "Paylark does one job: it follows up on unpaid invoices so you don’t have to.",
   "features": [
     {
       "icon": iconMailCheck,
-      "title": "Lead capture that respects people",
-      "text": "A waitlist with double opt-in, a real queue position, referrals, UTM attribution and qualifying questions."
+      "title": "Sent in your name",
+      "text": "Reminders go out from your own address and signature, and replies land in your inbox."
     },
     {
-      "icon": iconChartColumn,
-      "title": "Cookieless analytics",
-      "text": "Events without cookies that honour Do Not Track and Global Privacy Control. By default the browser keeps nothing but a visitor’s theme choice."
+      "icon": iconListChecks,
+      "title": "See who owes what",
+      "text": "One list of open invoices, with the reminders already sent and the next one for each client."
     },
     {
-      "icon": iconScale,
-      "title": "Legal starting points",
-      "text": "Five drafts filled from your config, plus a self-service page where visitors export or delete their data."
+      "icon": iconMessageSquareText,
+      "title": "Firm, never rude",
+      "text": "Choose the tone of each step and edit any message before it goes out."
     },
     {
-      "icon": iconBot,
-      "title": "Built for coding agents",
-      "text": "AGENTS.md, CLAUDE.md, eight skills and typed config errors, so your agent can edit safely and check its work."
+      "icon": iconBellOff,
+      "title": "Stops when they pay",
+      "text": "Mark an invoice paid, or let your payment link report it, and the reminders stop."
     }
   ],
   "primaryLabel": "Compare plans",
@@ -155,60 +156,56 @@ const section5: ComponentProps<typeof Feature155> = {
   "secondaryHref": "#faq"
 };
 const section6: ComponentProps<typeof Feature4> = {
-  "tagline": "Fake-door pricing",
-  "heading": "Test the price before the product exists",
-  "text": "Show real plans on /pricing and count who clicks Choose plan. Every click is logged as intent, and the visitor is told right away that you're measuring interest.",
+  "tagline": "Pricing preview",
+  "heading": "Help us set the price",
+  "text": "Paylark isn’t built yet. Choose the plan you’d pay for and we’ll tell you right away that it isn’t on sale. Nothing is charged.",
   "items": [
     {
-      "title": "Disclosed after the click",
-      "text": "Every Choose plan opens a message that says the plan isn't on sale yet. validate fails the build if a payment field appears."
+      "title": "No card, no charge",
+      "text": "There is no checkout yet. A plan click only tells us which price makes sense to you."
     },
     {
-      "title": "Never takes money",
-      "text": "The fake door has no checkout. When you're ready for preorders, /preorder hands off to a hosted checkout, and it's off by default."
+      "title": "Hear when it launches",
+      "text": "Join the waitlist from the same message and you’ll get one email, on launch day."
     }
   ],
   "itemStyle": "subheading",
-  "primaryLabel": "Try the pricing page",
-  "secondaryLabel": "How it stays honest",
+  "primaryLabel": "See the plans",
+  "secondaryLabel": "How this test works",
   "primaryHref": "/pricing/",
   "secondaryHref": "/legal/terms/#testing-interest",
-  "imageAlt": "Pricing page with the disclosure after a click: your click was counted, no payment was taken"
+  "imageAlt": "The message after a plan click: Studio isn't available yet and no payment was taken"
 };
 const section7: ComponentProps<typeof Pricing> = {
-  "tagline": "Editions",
-  "heading": "Start free. Upgrade when you're ready to measure.",
-  "description": "One-time licenses, no subscription. Pro updates are free within the current major version."
+  "tagline": "Pricing",
+  "heading": "Plans for one person or a whole studio",
+  "description": "Monthly, no setup fee. Pick the plan that fits how many clients you bill."
 };
 const section8: ComponentProps<typeof Faq2> = {
   "look": "card",
   "heading": "Questions",
-  "description": "Straight answers, including what Smoketest won't do.",
+  "description": "Straight answers, including what Paylark won’t do.",
   "questions": [
     {
-      "question": "Will Smoketest tell me if my idea is good?",
-      "answer": "No. It measures interest: confirmed signups, referrals, sources and plan clicks against the target you set. What the numbers mean is your call.",
+      "question": "Will my clients know the reminders are automated?",
+      "answer": "They come from your address, in your words, so they read like your own follow-ups. Paylark adds no branding to them.",
       "open": true
     },
     {
-      "question": "Is a fake door honest?",
-      "answer": "Only when it's disclosed, so Smoketest always discloses it. Every Choose plan click opens a message that says the plan isn't on sale yet, and no payment is ever taken."
+      "question": "Can I stop the reminders for one client?",
+      "answer": "Yes. Pause a client or a single invoice, and nothing more is sent until you resume it."
     },
     {
-      "question": "Do the legal drafts replace a lawyer?",
-      "answer": "No. They're starting-point drafts, not legal advice: have a person check them before launch. validate reminds you until legal.reviewed is set to true, and your agent can't flip that flag."
+      "question": "Does Paylark take payments?",
+      "answer": "No. Clients pay you as they do today, by bank transfer or through your own payment link. Paylark only sends the reminders."
     },
     {
-      "question": "Which coding agents does it work with?",
-      "answer": "Any agent that reads AGENTS.md or CLAUDE.md, such as Claude Code, Cursor or Codex. The skills give it an interview, typed config errors and a validate command to check its work."
+      "question": "Which invoicing tools does it work with?",
+      "answer": "At launch, forwarded invoice emails and CSV uploads. Other tools come next, starting with the ones people on the waitlist use most."
     },
     {
-      "question": "What does it cost to run?",
-      "answer": "The site is static. Cloudflare's free tier covers the start, including the Worker and D1 database that store Pro leads."
-    },
-    {
-      "question": "Can I move from Lite to Pro later?",
-      "answer": "Yes. Your URLs stay the same, /legal/privacy/ included, and your config carries over."
+      "question": "When does Paylark launch?",
+      "answer": "When enough people tell us they need it. Join the waitlist and you’ll get one email, on launch day."
     }
   ],
   "ctaLabel": "Ask a question",
@@ -226,14 +223,14 @@ const jsonLd: Record<string, unknown>[] = [
     name: site.product.name,
     description: site.product.description,
     ...(siteUrl && { url: siteUrl.toString() }),
-    applicationCategory: "DeveloperApplication",
+    applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
     ...(site.pricing.mode === "checkout" ? { offers: site.pricing.plans.filter((p) => p.checkoutUrl).map((p) => ({ "@type": "Offer", name: p.name, price: p.price.replace(/[^0-9.]/gu, ""), priceCurrency: "USD", url: p.checkoutUrl })) } : {}),
   },
 ];
 const section9: ComponentProps<typeof CtaPanel> = {
-  "heading": "Find out if anyone wants it before you build it",
-  "description": "Set up Smoketest with your coding agent, publish it, and let real visitors answer."
+  "heading": "Stop chasing invoices by hand",
+  "description": "Join the waitlist and we’ll email you once, when Paylark launches."
 };
 ---
 <Base title={site.seo.title ?? `${site.product.name} — ${site.product.description}`} jsonLd={jsonLd}>

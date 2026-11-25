@@ -21,7 +21,7 @@ cookieless analytics and a legal pack. You are helping the owner set it up and c
 | Icons and the web manifest | `public/favicon.svg` → `npm run icons` renders the PNGs and `favicon.ico`; `/manifest.webmanifest` comes from `src/pages/manifest.webmanifest.ts` |
 | Redirects | `redirects` in `astro.config.mjs`, copied into `public/_redirects` and `vercel.json` (the build warns when they differ) |
 | Going live: address, icons, hosts, staging, Search Console | `README.md` → "Before you launch" |
-| Skills for this project | `agent/skills/` (`npm run link-skills` links them for Claude Code and Cursor) |
+| Skills for this project | `.claude/skills/<name>/SKILL.md` — Claude Code and Cursor load them from there; other agents can read them as instructions |
 
 ## Commands
 
@@ -88,5 +88,3 @@ to report; errors are not), and `npx astro check` must show 0 errors.
   the API don't (`/rss.xml`, `/api/leads`). Absolute URLs come from `src/lib/url.ts` (`absolute`,
   `siteUrl`), which leaves them out while `product.url` is a placeholder — never build them from
   `product.url` directly.
-- The site no longer comes from the website-toolkit builder: do not run `website-toolkit-builder
-  apply` on it.

@@ -41,7 +41,7 @@
   <rect width="1600" height="900" fill="url(#glowBL)"/>
   <rect width="1600" height="900" fill="url(#dots)"/>
 
-  <!-- The app window: a founder's waitlist page and its report -->
+  <!-- The product: Paylark's invoice list and the next reminder (a made-up product; addresses on example.com) -->
   <g transform="translate(120 88)">
     <rect width="1360" height="860" rx="22" filter="url(#shadow)" style="fill:var(--m-surface)"/>
     <path d="M22 0h1316a22 22 0 0 1 22 22v30H0V22A22 22 0 0 1 22 0z" style="fill:var(--m-surface-2)"/>
@@ -50,127 +50,154 @@
     <circle cx="48" cy="26" r="6" style="fill:var(--m-tint-2)"/>
     <circle cx="68" cy="26" r="6" style="fill:var(--m-tint-2)"/>
     <rect x="560" y="14" width="240" height="25" rx="12.5" style="fill:var(--m-surface);stroke:var(--m-line)"/>
-    <path d="M637 24.5v-2a3 3 0 0 1 6 0v2 M635.5 24.5h9v7h-9z" fill="none" stroke-width="1.4" stroke-linejoin="round" style="stroke:var(--m-ink-3)"/>
-    <text x="652" y="31" font-size="13" style="fill:var(--m-ink-2)">invoicely.com</text>
+    <path d="M627 24.5v-2a3 3 0 0 1 6 0v2 M625.5 24.5h9v7h-9z" fill="none" stroke-width="1.4" stroke-linejoin="round" style="stroke:var(--m-ink-3)"/>
+    <text x="642" y="31" font-size="13" style="fill:var(--m-ink-2)">app.example.com</text>
 
-    <!-- Founder's page -->
-    <rect x="48" y="80" width="26" height="26" rx="8" fill="url(#btn)"/>
-    <path d="M56 99l5-9 5 9" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <text x="84" y="99" font-family="Manrope, sans-serif" font-size="17" font-weight="600" style="fill:var(--m-ink)">Invoicely</text>
-    <rect x="476" y="89" width="40" height="7" rx="3.5" fill-opacity="0.1" style="fill:var(--m-ink)"/>
-    <rect x="532" y="89" width="40" height="7" rx="3.5" fill-opacity="0.1" style="fill:var(--m-ink)"/>
-    <rect x="588" y="89" width="40" height="7" rx="3.5" fill-opacity="0.1" style="fill:var(--m-ink)"/>
-    <rect x="664" y="76" width="124" height="34" rx="9" style="fill:var(--m-ink)"/>
-    <text x="726" y="98" font-size="13" font-weight="600" text-anchor="middle" style="fill:var(--m-surface)">Join waitlist</text>
-
-    <rect x="48" y="146" width="152" height="30" rx="15" style="fill:var(--m-tint)"/>
-    <circle cx="66" cy="161" r="4" style="fill:var(--m-accent)"/>
-    <text x="78" y="166" font-size="13" font-weight="600" style="fill:var(--m-accent-text)">Early access</text>
-    <text x="48" y="238" font-family="Manrope, sans-serif" font-size="50" font-weight="600" letter-spacing="-1.6" style="fill:var(--m-ink)">Invoices that chase</text>
-    <text x="48" y="296" font-family="Manrope, sans-serif" font-size="50" font-weight="600" fill="url(#violet)" letter-spacing="-1.6">themselves.</text>
-    <text x="48" y="340" font-size="18" style="fill:var(--m-ink-2)">Polite reminders, on schedule, until the client pays.</text>
-
-    <rect x="48" y="368" width="384" height="56" rx="12" stroke-width="1.5" style="fill:var(--m-surface);stroke:var(--m-tint-2)"/>
-    <text x="70" y="402" font-size="16" style="fill:var(--m-ink-3)">you@studio.com</text>
-    <rect x="444" y="368" width="196" height="56" rx="12" fill="url(#btn)"/>
-    <rect x="445" y="369" width="194" height="1.5" rx="0.75" fill="#FFFFFF" fill-opacity="0.35"/>
-    <text x="542" y="402" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="middle">Join the waitlist</text>
-
-    <circle cx="62" cy="458" r="12" stroke-width="2.5" style="fill:var(--m-highlight);stroke:var(--m-surface)"/>
-    <circle cx="82" cy="458" r="12" stroke-width="2.5" style="fill:var(--m-accent-2);stroke:var(--m-surface)"/>
-    <circle cx="102" cy="458" r="12" stroke-width="2.5" style="fill:var(--m-accent);stroke:var(--m-surface)"/>
-    <text x="126" y="463" font-size="14" style="fill:var(--m-ink-2)">Your place in line moves up when friends join</text>
-
-    <g transform="translate(48 512)">
-      <rect width="236" height="180" rx="16" style="fill:var(--m-surface-2);stroke:var(--m-line)"/>
-      <text x="22" y="38" font-size="15" font-weight="600" style="fill:var(--m-ink)">Solo</text>
-      <text x="22" y="78" font-family="Manrope, sans-serif" font-size="30" font-weight="600" style="fill:var(--m-ink)">$5<tspan font-family="'DM Sans', sans-serif" font-size="14" font-weight="400" style="fill:var(--m-ink-2)">/mo</tspan></text>
-      <rect x="22" y="96" width="150" height="7" rx="3.5" fill-opacity="0.08" style="fill:var(--m-ink)"/>
-      <rect x="22" y="126" width="192" height="36" rx="10" style="fill:var(--m-surface);stroke:var(--m-tint-3)"/>
-      <text x="118" y="149" font-size="13" font-weight="600" text-anchor="middle" style="fill:var(--m-accent-text)">Choose plan</text>
+    <!-- Sidebar -->
+    <rect x="0" y="52" width="232" height="808" style="fill:var(--m-surface-2)"/>
+    <line x1="232" y1="52" x2="232" y2="860" style="stroke:var(--m-line)"/>
+    <rect x="28" y="80" width="26" height="26" rx="8" fill="url(#btn)"/>
+    <path d="M35.5 93.5l5 5 9-10" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="64" y="99" font-family="Manrope, sans-serif" font-size="17" font-weight="600" style="fill:var(--m-ink)">Paylark</text>
+    <g font-size="14">
+      <rect x="16" y="134" width="200" height="38" rx="10" style="fill:var(--m-tint)"/>
+      <rect x="32" y="146" width="14" height="14" rx="3" fill="none" stroke-width="1.8" style="stroke:var(--m-accent-text)"/>
+      <text x="58" y="158" font-weight="600" style="fill:var(--m-accent-text)">Invoices</text>
+      <circle cx="39" cy="197" r="7" fill="none" stroke-width="1.8" style="stroke:var(--m-ink-3)"/>
+      <text x="58" y="202" style="fill:var(--m-ink-2)">Reminders</text>
+      <circle cx="39" cy="238" r="4" fill="none" stroke-width="1.8" style="stroke:var(--m-ink-3)"/>
+      <path d="M31 251a8 6 0 0 1 16 0" fill="none" stroke-width="1.8" style="stroke:var(--m-ink-3)"/>
+      <text x="58" y="246" style="fill:var(--m-ink-2)">Clients</text>
+      <circle cx="39" cy="285" r="6" fill="none" stroke-width="1.8" stroke-dasharray="3 2" style="stroke:var(--m-ink-3)"/>
+      <text x="58" y="290" style="fill:var(--m-ink-2)">Settings</text>
     </g>
-    <g transform="translate(300 512)">
-      <rect width="236" height="180" rx="16" stroke-width="1.5" style="fill:var(--m-surface);stroke:var(--m-accent-text)"/>
-      <text x="22" y="38" font-size="15" font-weight="600" style="fill:var(--m-ink)">Studio</text>
-      <text x="22" y="78" font-family="Manrope, sans-serif" font-size="30" font-weight="600" style="fill:var(--m-ink)">$12<tspan font-family="'DM Sans', sans-serif" font-size="14" font-weight="400" style="fill:var(--m-ink-2)">/mo</tspan></text>
-      <rect x="22" y="96" width="170" height="7" rx="3.5" fill-opacity="0.08" style="fill:var(--m-ink)"/>
-      <rect x="22" y="126" width="192" height="36" rx="10" fill="url(#btn)"/>
-      <text x="118" y="149" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">Choose plan</text>
+    <rect x="16" y="520" width="200" height="104" rx="14" style="fill:var(--m-surface);stroke:var(--m-line)"/>
+    <text x="34" y="550" font-size="12" style="fill:var(--m-ink-2)">Next reminder</text>
+    <text x="34" y="578" font-family="Manrope, sans-serif" font-size="19" font-weight="600" style="fill:var(--m-ink)">Nov 2, 9:00</text>
+    <text x="34" y="602" font-size="12" style="fill:var(--m-ink-3)">Maple Design · #1042</text>
+
+    <!-- Header -->
+    <text x="272" y="118" font-family="Manrope, sans-serif" font-size="28" font-weight="600" style="fill:var(--m-ink)">Invoices</text>
+    <text x="272" y="146" font-size="15" style="fill:var(--m-ink-2)">3 open · 1 overdue</text>
+    <rect x="1046" y="90" width="122" height="40" rx="10" style="fill:var(--m-surface);stroke:var(--m-line)"/>
+    <text x="1107" y="115" font-size="14" font-weight="600" text-anchor="middle" style="fill:var(--m-ink)">Import CSV</text>
+    <rect x="1180" y="90" width="140" height="40" rx="10" fill="url(#btn)"/>
+    <rect x="1181" y="91" width="138" height="1.5" rx="0.75" fill="#FFFFFF" fill-opacity="0.35"/>
+    <text x="1250" y="115" font-size="14" font-weight="600" fill="#FFFFFF" text-anchor="middle">Add invoice</text>
+
+    <!-- Totals -->
+    <g transform="translate(272 176)">
+      <rect width="336" height="96" rx="14" style="fill:var(--m-surface);stroke:var(--m-line)"/>
+      <text x="20" y="34" font-size="13" style="fill:var(--m-ink-2)">Outstanding</text>
+      <text x="20" y="74" font-family="Manrope, sans-serif" font-size="28" font-weight="600" style="fill:var(--m-ink)">$5,330</text>
     </g>
-    <g transform="translate(552 512)">
-      <rect width="236" height="180" rx="16" style="fill:var(--m-surface-2);stroke:var(--m-line)"/>
-      <text x="22" y="38" font-size="15" font-weight="600" style="fill:var(--m-ink)">Agency</text>
-      <text x="22" y="78" font-family="Manrope, sans-serif" font-size="30" font-weight="600" style="fill:var(--m-ink)">$29<tspan font-family="'DM Sans', sans-serif" font-size="14" font-weight="400" style="fill:var(--m-ink-2)">/mo</tspan></text>
-      <rect x="22" y="96" width="140" height="7" rx="3.5" fill-opacity="0.08" style="fill:var(--m-ink)"/>
-      <rect x="22" y="126" width="192" height="36" rx="10" style="fill:var(--m-surface);stroke:var(--m-tint-3)"/>
-      <text x="118" y="149" font-size="13" font-weight="600" text-anchor="middle" style="fill:var(--m-accent-text)">Choose plan</text>
+    <g transform="translate(628 176)">
+      <rect width="336" height="96" rx="14" style="fill:var(--m-surface);stroke:var(--m-line)"/>
+      <text x="20" y="34" font-size="13" style="fill:var(--m-ink-2)">Overdue</text>
+      <text x="20" y="74" font-family="Manrope, sans-serif" font-size="28" font-weight="600" style="fill:var(--m-ink)">$1,200</text>
+      <rect x="226" y="18" width="90" height="24" rx="12" fill="#E5484D" fill-opacity="0.12"/>
+      <text x="271" y="35" font-size="12" font-weight="600" fill="#D13D43" text-anchor="middle">1 invoice</text>
+    </g>
+    <g transform="translate(984 176)">
+      <rect width="336" height="96" rx="14" style="fill:var(--m-surface);stroke:var(--m-line)"/>
+      <text x="20" y="34" font-size="13" style="fill:var(--m-ink-2)">Paid, last 30 days</text>
+      <text x="20" y="74" font-family="Manrope, sans-serif" font-size="28" font-weight="600" style="fill:var(--m-ink)">$3,250</text>
     </g>
 
-    <!-- Report panel -->
-    <rect x="836" y="52" width="524" height="808" style="fill:var(--m-surface-2)"/>
-    <line x1="836" y1="52" x2="836" y2="860" style="stroke:var(--m-line)"/>
-    <text x="864" y="98" font-family="'JetBrains Mono', monospace" font-size="15" style="fill:var(--m-ink)">npm run report</text>
-    <rect x="1222" y="80" width="110" height="26" rx="13" style="fill:var(--m-surface);stroke:var(--m-line)"/>
-    <circle cx="1238" cy="93" r="4" fill="#3FB97A"/>
-    <text x="1250" y="98" font-size="12" style="fill:var(--m-ink-2)">last 14 days</text>
+    <!-- Invoice list -->
+    <g transform="translate(272 296)">
+      <rect width="668" height="352" rx="16" style="fill:var(--m-surface);stroke:var(--m-line)"/>
+      <path d="M16 0h636a16 16 0 0 1 16 16v32H0V16A16 16 0 0 1 16 0z" style="fill:var(--m-surface-2)"/>
+      <line x1="0" y1="48" x2="668" y2="48" style="stroke:var(--m-line)"/>
+      <g font-size="11" font-weight="600" letter-spacing="1.1" style="fill:var(--m-ink-3)">
+        <text x="24" y="30">CLIENT</text><text x="236" y="30">AMOUNT</text><text x="346" y="30">REMINDERS</text><text x="498" y="30">STATUS</text>
+      </g>
 
-    <rect x="864" y="124" width="468" height="78" rx="14" style="fill:var(--m-surface);stroke:var(--m-line)"/>
-    <text x="886" y="152" font-size="11" font-weight="600" letter-spacing="1.2" style="fill:var(--m-ink-3)">HYPOTHESIS</text>
-    <text x="886" y="180" font-size="16" font-weight="600" style="fill:var(--m-ink)">10% of /pricing visitors pick a plan</text>
-
-    <g transform="translate(864 218)">
-      <rect width="226" height="132" rx="14" style="fill:var(--m-surface);stroke:var(--m-line)"/>
-      <text x="18" y="30" font-size="13" style="fill:var(--m-ink-2)">Signups per day</text>
-      <g transform="translate(18 116)">
-        <rect x="0" y="-30" width="18" height="30" rx="4" style="fill:var(--m-accent)"/><rect x="0" y="-44" width="18" height="12" rx="4" style="fill:var(--m-tint-3)"/>
-        <rect x="27" y="-40" width="18" height="40" rx="4" style="fill:var(--m-accent)"/><rect x="27" y="-54" width="18" height="12" rx="4" style="fill:var(--m-tint-3)"/>
-        <rect x="54" y="-34" width="18" height="34" rx="4" style="fill:var(--m-accent)"/><rect x="54" y="-50" width="18" height="14" rx="4" style="fill:var(--m-tint-3)"/>
-        <rect x="81" y="-52" width="18" height="52" rx="4" style="fill:var(--m-accent)"/><rect x="81" y="-64" width="18" height="10" rx="4" style="fill:var(--m-tint-3)"/>
-        <rect x="108" y="-60" width="18" height="60" rx="4" style="fill:var(--m-accent)"/><rect x="108" y="-74" width="18" height="12" rx="4" style="fill:var(--m-tint-3)"/>
-        <rect x="135" y="-48" width="18" height="48" rx="4" style="fill:var(--m-accent)"/><rect x="135" y="-62" width="18" height="12" rx="4" style="fill:var(--m-tint-3)"/>
-        <rect x="162" y="-66" width="18" height="66" rx="4" style="fill:var(--m-accent)"/><rect x="162" y="-78" width="18" height="10" rx="4" style="fill:var(--m-tint-3)"/>
+      <g transform="translate(0 48)">
+        <circle cx="44" cy="38" r="16" style="fill:var(--m-tint-2)"/>
+        <text x="44" y="42.5" font-size="12" font-weight="600" text-anchor="middle" style="fill:var(--m-accent-text)">MD</text>
+        <text x="72" y="34" font-size="15" font-weight="600" style="fill:var(--m-ink)">Maple Design</text>
+        <text x="72" y="54" font-size="12" style="fill:var(--m-ink-3)">#1042 · due Oct 28</text>
+        <text x="236" y="43" font-size="15" font-weight="600" style="fill:var(--m-ink)">$1,200</text>
+        <circle cx="352" cy="38" r="5" style="fill:var(--m-accent)"/><circle cx="368" cy="38" r="5" style="fill:var(--m-accent)"/><circle cx="384" cy="38" r="5" style="fill:var(--m-tint-3)"/><circle cx="400" cy="38" r="5" style="fill:var(--m-tint-3)"/>
+        <text x="416" y="42.5" font-size="12" style="fill:var(--m-ink-2)">2 of 4</text>
+        <rect x="498" y="24" width="138" height="28" rx="14" fill="#E5484D" fill-opacity="0.12"/>
+        <text x="567" y="42.5" font-size="12" font-weight="600" fill="#D13D43" text-anchor="middle">Overdue · 4 days</text>
+      </g>
+      <line x1="0" y1="124" x2="668" y2="124" style="stroke:var(--m-line)"/>
+      <g transform="translate(0 124)">
+        <circle cx="44" cy="38" r="16" style="fill:var(--m-tint-2)"/>
+        <text x="44" y="42.5" font-size="12" font-weight="600" text-anchor="middle" style="fill:var(--m-accent-text)">OL</text>
+        <text x="72" y="34" font-size="15" font-weight="600" style="fill:var(--m-ink)">Orbit Labs</text>
+        <text x="72" y="54" font-size="12" style="fill:var(--m-ink-3)">#1043 · due Nov 3</text>
+        <text x="236" y="43" font-size="15" font-weight="600" style="fill:var(--m-ink)">$2,400</text>
+        <circle cx="352" cy="38" r="5" style="fill:var(--m-accent)"/><circle cx="368" cy="38" r="5" style="fill:var(--m-tint-3)"/><circle cx="384" cy="38" r="5" style="fill:var(--m-tint-3)"/><circle cx="400" cy="38" r="5" style="fill:var(--m-tint-3)"/>
+        <text x="416" y="42.5" font-size="12" style="fill:var(--m-ink-2)">1 of 4</text>
+        <rect x="498" y="24" width="112" height="28" rx="14" style="fill:var(--m-tint)"/>
+        <text x="554" y="42.5" font-size="12" font-weight="600" text-anchor="middle" style="fill:var(--m-accent-text)">Due in 2 days</text>
+      </g>
+      <line x1="0" y1="200" x2="668" y2="200" style="stroke:var(--m-line)"/>
+      <g transform="translate(0 200)">
+        <circle cx="44" cy="38" r="16" style="fill:var(--m-tint-2)"/>
+        <text x="44" y="42.5" font-size="12" font-weight="600" text-anchor="middle" style="fill:var(--m-accent-text)">SN</text>
+        <text x="72" y="34" font-size="15" font-weight="600" style="fill:var(--m-ink)">Studio North</text>
+        <text x="72" y="54" font-size="12" style="fill:var(--m-ink-3)">#1039 · due Oct 20</text>
+        <text x="236" y="43" font-size="15" font-weight="600" style="fill:var(--m-ink)">$850</text>
+        <circle cx="352" cy="38" r="5" style="fill:var(--m-accent)"/><circle cx="368" cy="38" r="5" style="fill:var(--m-accent)"/><circle cx="384" cy="38" r="5" style="fill:var(--m-accent)"/><circle cx="400" cy="38" r="4" fill="none" stroke-width="1.5" style="stroke:var(--m-tint-3)"/>
+        <text x="416" y="42.5" font-size="12" style="fill:var(--m-ink-2)">stopped</text>
+        <rect x="498" y="24" width="64" height="28" rx="14" fill="#3FB97A" fill-opacity="0.14"/>
+        <text x="530" y="42.5" font-size="12" font-weight="600" fill="#23885A" text-anchor="middle">Paid</text>
+      </g>
+      <line x1="0" y1="276" x2="668" y2="276" style="stroke:var(--m-line)"/>
+      <g transform="translate(0 276)">
+        <circle cx="44" cy="38" r="16" style="fill:var(--m-tint-2)"/>
+        <text x="44" y="42.5" font-size="12" font-weight="600" text-anchor="middle" style="fill:var(--m-accent-text)">FC</text>
+        <text x="72" y="34" font-size="15" font-weight="600" style="fill:var(--m-ink)">Field &amp; Co</text>
+        <text x="72" y="54" font-size="12" style="fill:var(--m-ink-3)">#1044 · due Nov 10</text>
+        <text x="236" y="43" font-size="15" font-weight="600" style="fill:var(--m-ink)">$1,730</text>
+        <circle cx="352" cy="38" r="5" style="fill:var(--m-tint-3)"/><circle cx="368" cy="38" r="5" style="fill:var(--m-tint-3)"/><circle cx="384" cy="38" r="5" style="fill:var(--m-tint-3)"/><circle cx="400" cy="38" r="5" style="fill:var(--m-tint-3)"/>
+        <text x="416" y="42.5" font-size="12" style="fill:var(--m-ink-2)">0 of 4</text>
+        <rect x="498" y="24" width="92" height="28" rx="14" style="fill:var(--m-surface-2);stroke:var(--m-line)"/>
+        <text x="544" y="42.5" font-size="12" font-weight="600" text-anchor="middle" style="fill:var(--m-ink-2)">Scheduled</text>
       </g>
     </g>
-    <g transform="translate(1106 218)">
-      <rect width="226" height="132" rx="14" style="fill:var(--m-surface);stroke:var(--m-line)"/>
-      <text x="18" y="30" font-size="13" style="fill:var(--m-ink-2)">Referral joins</text>
-      <path d="M18 106 C 48 100, 62 84, 88 88 S 128 64, 150 66 S 186 44, 208 38" fill="none" stroke-width="3" stroke-linecap="round" style="stroke:var(--m-accent-2)"/>
-      <path d="M18 106 C 48 100, 62 84, 88 88 S 128 64, 150 66 S 186 44, 208 38 V 116 H 18 Z" fill-opacity="0.1" style="fill:var(--m-accent-2)"/>
-      <circle cx="208" cy="38" r="5" stroke-width="2.5" style="fill:var(--m-surface);stroke:var(--m-accent-2)"/>
-    </g>
 
-    <g transform="translate(864 366)">
-      <rect width="468" height="112" rx="14" style="fill:var(--m-surface);stroke:var(--m-line)"/>
-      <text x="18" y="32" font-size="13" style="fill:var(--m-ink-2)">Plan intent rate</text>
-      <rect x="18" y="58" width="432" height="12" rx="6" style="fill:var(--m-tint)"/>
-      <rect x="18" y="58" width="252" height="12" rx="6" fill="url(#violet)"/>
-      <line x1="234" y1="48" x2="234" y2="80" stroke-width="1.6" stroke-dasharray="3 3" style="stroke:var(--m-ink)"/>
-      <text x="240" y="96" font-size="12" style="fill:var(--m-ink-2)">your target</text>
+    <!-- The next reminder, as the client will read it -->
+    <g transform="translate(964 296)">
+      <rect width="356" height="352" rx="16" style="fill:var(--m-surface);stroke:var(--m-line)"/>
+      <text x="24" y="36" font-size="11" font-weight="600" letter-spacing="1.1" style="fill:var(--m-ink-3)">NEXT REMINDER</text>
+      <rect x="226" y="18" width="106" height="26" rx="13" style="fill:var(--m-tint)"/>
+      <text x="279" y="36" font-size="12" font-weight="600" text-anchor="middle" style="fill:var(--m-accent-text)">Nov 2, 9:00</text>
+      <text x="24" y="70" font-size="15" font-weight="600" style="fill:var(--m-ink)">Maple Design · #1042</text>
+      <line x1="24" y1="88" x2="332" y2="88" style="stroke:var(--m-line)"/>
+      <text x="24" y="116" font-size="13" style="fill:var(--m-ink-3)">To <tspan style="fill:var(--m-ink)">sam@example.com</tspan></text>
+      <text x="24" y="146" font-size="15" font-weight="600" style="fill:var(--m-ink)">Invoice #1042, a quick reminder</text>
+      <g font-size="14" style="fill:var(--m-ink-2)">
+        <text x="24" y="176">Hi Sam, invoice #1042 for $1,200 was</text>
+        <text x="24" y="198">due on Oct 28. You can pay it with the</text>
+        <text x="24" y="220">link below whenever it suits you.</text>
+      </g>
+      <rect x="24" y="240" width="124" height="36" rx="9" fill="url(#btn)"/>
+      <text x="86" y="263" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">Pay invoice</text>
+      <line x1="24" y1="296" x2="332" y2="296" style="stroke:var(--m-line)"/>
+      <text x="24" y="326" font-size="12" style="fill:var(--m-ink-3)">Tone</text>
+      <g font-size="12" font-weight="600" text-anchor="middle">
+        <rect x="64" y="308" width="76" height="28" rx="14" style="fill:var(--m-surface-2);stroke:var(--m-line)"/>
+        <text x="102" y="326.5" style="fill:var(--m-ink-2)">Friendly</text>
+        <rect x="148" y="308" width="76" height="28" rx="14" stroke-width="1.5" style="fill:var(--m-tint);stroke:var(--m-accent-text)"/>
+        <text x="186" y="326.5" style="fill:var(--m-accent-text)">Neutral</text>
+        <rect x="232" y="308" width="58" height="28" rx="14" style="fill:var(--m-surface-2);stroke:var(--m-line)"/>
+        <text x="261" y="326.5" style="fill:var(--m-ink-2)">Firm</text>
+      </g>
     </g>
-
-    <g transform="translate(864 494)">
-      <rect width="468" height="158" rx="14" style="fill:var(--m-surface);stroke:var(--m-line)"/>
-      <text x="18" y="32" font-size="13" style="fill:var(--m-ink-2)">Top sources</text>
-      <text x="18" y="66" font-family="'JetBrains Mono', monospace" font-size="12" style="fill:var(--m-ink)">newsletter</text>
-      <rect x="128" y="56" width="300" height="12" rx="6" style="fill:var(--m-accent)"/>
-      <text x="18" y="98" font-family="'JetBrains Mono', monospace" font-size="12" style="fill:var(--m-ink)">community</text>
-      <rect x="128" y="88" width="196" height="12" rx="6" style="fill:var(--m-accent-2)"/>
-      <text x="18" y="130" font-family="'JetBrains Mono', monospace" font-size="12" style="fill:var(--m-ink)">ads</text>
-      <rect x="128" y="120" width="96" height="12" rx="6" style="fill:var(--m-highlight)"/>
-    </g>
-
-    <rect x="864" y="668" width="468" height="52" rx="14" style="fill:var(--m-tint)"/>
-    <circle cx="890" cy="694" r="10" style="fill:var(--m-accent)"/>
-    <path d="M885 694l3.5 3.5 6.5-7" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <text x="910" y="699" font-size="14" font-weight="600" style="fill:var(--m-accent-text)">Disclosure shown on every plan click</text>
   </g>
 
-  <!-- The check that runs before deploy -->
+  <!-- A payment arrives: the reminders for that invoice stop -->
   <g transform="translate(64 752)" filter="url(#lift)">
-    <rect width="336" height="62" rx="16" stroke="#FFFFFF" stroke-opacity="0.12" style="fill:var(--m-reverse)"/>
-    <circle cx="32" cy="31" r="11" style="fill:var(--m-accent)"/>
+    <rect width="420" height="62" rx="16" stroke="#FFFFFF" stroke-opacity="0.12" style="fill:var(--m-reverse)"/>
+    <circle cx="32" cy="31" r="11" fill="#3FB97A"/>
     <path d="M26.5 31l3.5 3.5 6.5-7" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <text x="54" y="37" font-family="'JetBrains Mono', monospace" font-size="15" fill="#FFFFFF">npm run validate</text>
-    <text x="314" y="37" font-size="14" fill="#FFFFFF" fill-opacity="0.65" text-anchor="end">22/22 checks</text>
+    <text x="54" y="37" font-size="15" font-weight="600" fill="#FFFFFF">Studio North paid $850</text>
+    <text x="398" y="37" font-size="14" fill="#FFFFFF" fill-opacity="0.65" text-anchor="end">reminders stopped</text>
   </g>
 </svg>

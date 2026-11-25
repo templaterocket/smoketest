@@ -1,6 +1,6 @@
 ---
 name: leads
-description: Choose and connect where signups go — the template's Cloudflare Worker + D1, or Loops, Mailchimp, Kit, MailerLite, Brevo, Buttondown, Formspree, Web3Forms, Supabase, Google Sheets or a webhook — and test it end to end. Use when the owner asks where emails are stored or wants to switch provider.
+description: Chooses and connects where signups go — the template's Cloudflare Worker + D1, or Loops, Mailchimp, Kit, MailerLite, Brevo, Buttondown, Formspree, Web3Forms, Supabase, Google Sheets or a webhook — and tests it end to end. Use when the owner asks where emails are stored or wants to switch provider.
 ---
 
 # leads — connect the signup form

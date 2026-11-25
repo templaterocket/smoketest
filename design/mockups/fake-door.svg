@@ -82,12 +82,12 @@
     <text x="60" y="222" font-size="27" style="fill:var(--m-ink)">Your click was counted. <tspan font-weight="600">No payment was taken.</tspan></text>
     <text x="60" y="264" font-size="27" style="fill:var(--m-ink-2)">Want to hear when it launches?</text>
     <rect x="60" y="306" width="514" height="86" rx="18" stroke-width="2" style="fill:var(--m-surface);stroke:var(--m-tint-2)"/>
-    <text x="92" y="359" font-size="24" style="fill:var(--m-ink-3)">you@studio.com</text>
+    <text x="92" y="359" font-size="24" style="fill:var(--m-ink-3)">you@example.com</text>
     <rect x="590" y="306" width="310" height="86" rx="18" fill="url(#btn)"/>
     <text x="745" y="359" font-size="24" font-weight="600" fill="#FFFFFF" text-anchor="middle">Join the waitlist</text>
     <line x1="60" y1="436" x2="900" y2="436" stroke-width="2" style="stroke:var(--m-line)"/>
     <circle cx="74" cy="474" r="9" style="fill:var(--m-accent)"/>
     <path d="M69.5 474l3 3 6-6.5" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <text x="96" y="481" font-size="20" style="fill:var(--m-ink-2)">Shown after every plan click · checked by npm run validate</text>
+    <text x="96" y="481" font-size="20" style="fill:var(--m-ink-2)">Shown after every plan click · no card asked</text>
   </g>
 </svg>

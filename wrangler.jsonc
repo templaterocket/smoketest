@@ -25,8 +25,8 @@
     }
   ],
   "vars": {
-    // A sender on a domain verified in Resend, e.g. "Smoketest <hello@yourdomain.com>".
-    "EMAIL_FROM": "Smoketest <onboarding@resend.dev>",
+    // A sender on a domain verified in Resend, e.g. "Paylark <hello@example.com>".
+    "EMAIL_FROM": "Paylark <onboarding@resend.dev>",
     // Where contact and access requests are emailed (optional).
     "OWNER_EMAIL": "",
     "IP_HASH_RETENTION_DAYS": "30"

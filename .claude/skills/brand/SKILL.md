@@ -1,6 +1,6 @@
 ---
 name: brand
-description: Change the site's look — colour preset, light/dark theme, fonts, the owner's own brand colours, homepage layout, corner radius, type scale — keeping contrast readable. Use when the owner asks for their brand colours, a different font, dark mode, a lighter/darker feel or a different homepage arrangement.
+description: Changes the site's look — colour preset, light/dark theme, fonts, the owner's own brand colours, homepage layout, corner radius, type scale — keeping contrast readable. Use when the owner asks for their brand colours, a different font, dark mode, a lighter/darker feel or a different homepage arrangement.
 ---
 
 # brand — the look, through the config and the tokens

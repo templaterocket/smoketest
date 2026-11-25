@@ -4,7 +4,7 @@
  * Where it comes from: in the template's development repository this file is generated from
  * the Figma export (and overwritten on the next export). In a site built from the template
  * it is the source of truth: edit the values here (keep the names) and every page follows.
- * To change the look, use the brand skill (agent/skills/brand) or edit the presets in presets.css.
+ * To change the look, use the brand skill (.claude/skills/brand) or edit the presets in presets.css.
  *
  * Tiers:
  *   --color-*                  primitives (raw values) — the palette
@@ -495,8 +495,8 @@
 
 /* ========================================================================
    TIER 4 · LAYOUT  (library extension — not in Nodity's own tokens.css)
-   Section containers and text measures. A site that adds a library component
-   needs these too; `website-toolkit-library add` lists any that are missing.
+   Section containers and text measures, used by the section components in
+   src/components/library/.
    ===================================================================== */
 :root {
   --size-container-l: 1280px;

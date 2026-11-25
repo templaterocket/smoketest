@@ -6,6 +6,5 @@ dist/
 .wrangler/
 .dev.vars
 
-# Made by `npm run link-skills` from agent/skills (run it once per checkout)
-.claude/skills/
-.cursor/rules/
+# Claude Code: personal settings stay local (.claude/skills/ is part of the template)
+.claude/settings.local.json

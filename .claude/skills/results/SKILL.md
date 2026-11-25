@@ -1,6 +1,6 @@
 ---
 name: results
-description: Read the demand test — confirmed signups, sources, referrals and plan clicks against the hypothesis — and summarise what the numbers say without overclaiming. Use when the owner asks "how is it going", "did it work", or wants a results summary.
+description: Reads the demand test — confirmed signups, sources, referrals and plan clicks against the hypothesis — and summarises what the numbers say without overclaiming. Use when the owner asks "how is it going", "did it work", or wants a results summary.
 ---
 
 # results — what the test measured

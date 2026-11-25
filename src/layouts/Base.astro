@@ -47,6 +47,7 @@ const theme = { configured: site.brand.theme, toggle: site.brand.themeToggle, ke
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content={themeColors[initialTheme]} data-light={themeColors.light} data-dark={themeColors.dark} />
     <script is:inline define:vars={{ theme }}>
       // The theme before the first paint, so a dark page never flashes white: the visitor's saved

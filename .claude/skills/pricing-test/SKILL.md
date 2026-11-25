@@ -1,6 +1,6 @@
 ---
 name: pricing-test
-description: Set up and read the pricing test — fake-door plans that count "Choose plan" clicks with an honest disclosure, or real checkout links — and compare the intent rate with the target. Use when the owner wants to test prices, add plans, or start taking real pre-orders.
+description: Sets up and reads the pricing test — fake-door plans that count "Choose plan" clicks with an honest disclosure, or real checkout links — and compares the intent rate with the target. Use when the owner wants to test prices, add plans, or start taking real pre-orders.
 ---
 
 # pricing-test — measure willingness to pay, honestly

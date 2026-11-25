@@ -1,6 +1,6 @@
 ---
 name: legal
-description: Fill in the legal pack — privacy, cookies, terms, pre-order terms, imprint and the data request page — from the owner's details, and keep it consistent with the providers in use. Use when the owner asks about privacy, cookies, GDPR, terms or an imprint.
+description: Fills in the legal pack — privacy, cookies, terms, pre-order terms, imprint and the data request page — from the owner's details, and keeps it consistent with the providers in use. Use when the owner asks about privacy, cookies, GDPR, terms or an imprint.
 ---
 
 # legal — starting-point drafts, filled in

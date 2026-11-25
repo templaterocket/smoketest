@@ -4,6 +4,24 @@ All notable changes to Smoketest are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [1.1.0] — 2026-11-25
+
+- The sample content is now a made-up product, Paylark (polite reminders for unpaid invoices), instead
+  of Smoketest describing itself: homepage copy in all three layouts, plans and hypothesis in
+  `site.config.ts`, the two changelog entries, and the hero and "How it works" mockups, redrawn as
+  Paylark's own screens. Replace it with your product, or let `/validate-setup` do it.
+- The pill above the hero heading is a `pill` prop of the hero in `src/pages/index.astro` (it was
+  text in `craft.css`); leave it out for none.
+- Placeholder addresses use example.com: the email field reads `you@example.com`, and the sender
+  examples in `wrangler.jsonc` and the `launch` skill use example.com.
+- The skills live in `.claude/skills/`, where Claude Code and Cursor load them without a setup step;
+  `npm run link-skills` is gone. Their descriptions say what each one does in the third person, and
+  `validate-setup` counts its 13 questions correctly.
+- The README links the live demo.
+- Pages carry a `generator` meta tag naming the Astro version.
+- Comments about the tool the homepage was first generated with are gone, and `design/history/`
+  stays out of releases.
+
 ## [1.0.1] — 2026-11-18
 
 - Fake-door pricing: the dialog no longer says "Your click was counted" when nothing stored the
