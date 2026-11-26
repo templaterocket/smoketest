@@ -200,6 +200,11 @@ export const configSchema = z.object({
     ]).prefault({ id: "none" }),
     respectDoNotTrack: z.boolean().default(true),
   }).prefault({}),
+  /**
+   * A "Template by ShipThemes" link in the footer's bottom row. Optional: the MIT licence doesn't
+   * require it, so set false to remove it.
+   */
+  credit: z.boolean().default(true),
   seo: z.object({
     title: z.string().optional(),
     ogImage: z.string().default("/og-default.png"),

@@ -91,6 +91,9 @@ export const site = loadConfig({
 
   seo: { ogImage: "/og-default.png", locale: "en" },
 
+  // A "Template by ShipThemes" link in the footer. Optional (MIT doesn't require it): false removes it.
+  credit: true,
+
   legal: {
     companyName: "{{COMPANY_NAME}}",
     contactEmail: "privacy@example.com",

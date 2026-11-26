@@ -1,7 +1,8 @@
 ---
 /**
  * The site's footer on every page: product links, the legal pack in use (from src/lib/legal.ts),
- * "Cookie settings" when a consent banner exists, and the oversized wordmark (craft layer).
+ * "Cookie settings" when a consent banner exists, the template credit (site.credit) and the
+ * oversized wordmark (craft layer).
  */
 import CompanyLogo from "../library/CompanyLogo.astro";
 import { homeHas } from "../../lib/layout";
@@ -39,7 +40,10 @@ const link = "text-md text-ink-secondary transition-colors hover:text-ink";
     </div>
     <div class="flex flex-col gap-2 border-t border-line-soft pt-6 text-sm text-ink-secondary sm:flex-row sm:justify-between">
       <p>© {year} {site.product.name}</p>
-      <a class="hover:text-ink" href="/legal/privacy/">Privacy</a>
+      <div class="flex flex-wrap gap-x-6 gap-y-2">
+        <a class="hover:text-ink" href="/legal/privacy/">Privacy</a>
+        {site.credit && <a class="hover:text-ink" href="https://shipthemes.com/templates/smoketest">Template by ShipThemes</a>}
+      </div>
     </div>
   </div>
   <p class="footer-11__wordmark" aria-hidden="true">{site.product.name}</p>

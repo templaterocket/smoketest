@@ -4,6 +4,11 @@ All notable changes to Smoketest are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [1.2.0] — 2026-11-26
+
+- The footer's bottom row has a "Template by ShipThemes" link, next to Privacy. It is optional:
+  set `credit: false` in `site.config.ts` to remove it. The MIT licence doesn't require it.
+
 ## [1.1.0] — 2026-11-25
 
 - The sample content is now a made-up product, Paylark (polite reminders for unpaid invoices), instead

@@ -52,6 +52,7 @@ Claude Code or Cursor, start with `/validate-setup` (the skills are in `.claude/
 | `hypothesis` | What you are testing; `npm run report` compares results with it |
 | `analytics` | `none` · `plausible` · `umami` · `fathom` · `cloudflare` (all cookieless) · `ga4` (cookies → consent banner) |
 | `seo` | Title, OG image, locale, Twitter handle |
+| `credit` | A "Template by ShipThemes" link in the footer. On by default; `false` removes it (MIT doesn't require it) |
 | `legal` | Company details that fill the legal drafts; `hosting` (named in the privacy policy); `imprint`; `reviewed` (set by a person only) |
 
 ## Look and layout — `brand`, `layout`
